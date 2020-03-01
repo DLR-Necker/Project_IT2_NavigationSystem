@@ -151,20 +151,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Calculator_BestWay.h" />
     <ClInclude Include="City.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Preprocessor_BestWay.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Way_Calculator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algorithm_Prototype.cpp" />
+    <ClCompile Include="Calculator_BestWay.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Preprocessor_BestWay.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Way_Calculator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,6 +24,15 @@
     <ClInclude Include="City.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Preprocessor_BestWay.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Way_Calculator.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator_BestWay.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -36,6 +45,15 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="City.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Preprocessor_BestWay.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Way_Calculator.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator_BestWay.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
