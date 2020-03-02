@@ -1,8 +1,8 @@
-#ifndef CITY_H
-#define	CITY_H
+#pragma once
 
-#include "pch.h"
 #include <string>
+#include "pch.h"
+
 
 using namespace::std;
 
@@ -36,4 +36,4 @@ public:
 	string getCountry();
 	int getPopulation();
 };
-#endif
+

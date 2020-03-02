@@ -5,7 +5,7 @@
 Way_Calculator::Way_Calculator() {};
 
 // Special Constructor
-Way_Calculator::Way_Calculator(int network[100][100]) {};
+Way_Calculator::Way_Calculator(int network[maxCitys][maxCitys]) {};
 
 // Default Deconstructor
 Way_Calculator::~Way_Calculator() {};

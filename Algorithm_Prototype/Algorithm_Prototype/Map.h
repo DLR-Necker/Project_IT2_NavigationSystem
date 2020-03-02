@@ -1,8 +1,8 @@
-#ifndef MAP_H
-#define	MAP_H
+#pragma once
 
 #include <vector>
 #include "City.h"
+#include "Network.h"
 using namespace::std;
 
 class Map
@@ -14,13 +14,13 @@ private:
 
 public:
 	// Attributes
-	City* listCitys[100];
+	City* listCitys[maxCitys];
 
 	// Default Constructor
 	Map();
 
 	//Special Constructor
-	Map(type mapType, City* listCitys[], vector<vector<int>> network);
+	Map(type mapType, City* listCitys[maxCitys], vector<vector<int>> network);
 
 	// Default Deconstructor
 	~Map();
@@ -47,4 +47,3 @@ public:
 
 
 };
-#endif 
