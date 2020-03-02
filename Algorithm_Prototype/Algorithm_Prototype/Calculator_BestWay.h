@@ -1,5 +1,4 @@
-#ifndef CALCULATOR_BEST_WAY_H
-#define	CALCULATOR_BEST_WAY_H
+#pragma once
 
 #include "Way_Calculator.h"
 
@@ -19,6 +18,5 @@ public:
 
 
 };
-#endif
 
 
