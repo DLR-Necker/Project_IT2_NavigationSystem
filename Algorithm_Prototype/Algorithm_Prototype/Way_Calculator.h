@@ -10,8 +10,8 @@ class Way_Calculator
 {
 protected:
 	int network[100][100];
-	Point start;
-	Point ende;
+	Vertex start;
+	Vertex ende;
 	vector<vector<City*>> waysFound;
 
 public:
