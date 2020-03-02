@@ -12,7 +12,7 @@ protected:
 	int network[maxCitys][maxCitys];
 	Vertex start;
 	Vertex ende;
-	vector<vector<City*>> waysFound;		// potential memory leak
+	vector<vector<City*>> waysFound;		// potential memory leak :(
 
 public:
 	// Default Constructor
