@@ -44,7 +44,7 @@ public:
 	@return possiblePaths					Vector of path objects that lead from start to end.
 	*/
 
-	vector<Path> everyWay(City* currentCity, City* end);
+	Path everyWay(City* currentCity, City* end);
 
 };
 

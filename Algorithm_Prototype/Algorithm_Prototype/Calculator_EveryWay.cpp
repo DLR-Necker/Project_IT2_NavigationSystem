@@ -26,10 +26,10 @@ void Calculator_EveryWay::add_PathtoPossiblePaths(Path currentPath) {
 	this->possiblePaths.push_back(currentPath);
 }
 
-vector<Path> Calculator_EveryWay::everyWay(City* currentCity, City* end)
+Path Calculator_EveryWay::everyWay(City* currentCity, City* end)
 {	
 	//Define map matrice to be used for calculation:
-	Way_Calculator::network_distance[maxCitys]
+	unsigned int currentDistance = Way_Calculator::network_distance[0][1];
 
 	// Retrieve matrice position of current city and end from network array:
 
@@ -49,7 +49,7 @@ vector<Path> Calculator_EveryWay::everyWay(City* currentCity, City* end)
 		// Add path to possiblePaths
 		this->Calculator_EveryWay::add_PathtoPossiblePaths(Path currentPath);
 		//return possiblePaths
-		return vector<Path>();
+		return Path();
 
 	} // 2nd break condition of search: no more unvisited neighbouring cities 
 	else if (...) {
@@ -58,6 +58,6 @@ vector<Path> Calculator_EveryWay::everyWay(City* currentCity, City* end)
 	else {
 
 	}
-		return vector<Path>();
+		return Path();
 
 }

@@ -5,9 +5,9 @@
 Path::Path() {}
 
 //Special Constructor
-Path::Path(vector<City*> citysVisited, unsigned int cost) {
+Path::Path(vector<City*> citysVisited, unsigned int totalCost) {
 	this->citysVisited = citysVisited;
-	this->cost = cost;
+	this->totalCost = totalCost;
 }
 
 // Destructor
@@ -20,16 +20,16 @@ Path::~Path() {}
 void Path::setCitysVisited(vector<City*> citysVisited) {
 	this->citysVisited = citysVisited;
 }
-void Path::setCost(unsigned int cost) {
-	this->cost = cost;
+void Path::setTotalCost(unsigned int totalCost) {
+	this->totalCost = totalCost;
 }
 
 /*** Getter ***/
 vector<City*> Path::getCitysVisited() {
 	return this->citysVisited;
 }
-unsigned int Path::getCost() {
-	return this->cost;
+unsigned int Path::getTotalCost() {
+	return this->totalCost;
 }
 /*** Additional Methods ***/
 void Path::add_CitytoPath(City* currentCity) {
