@@ -5,7 +5,7 @@
 Way_Calculator::Way_Calculator() {};
 
 // Special Constructor
-Way_Calculator::Way_Calculator(int network_distance[maxCitys][maxCitys], unsigned int network_time[maxCitys][maxCitys]) {};
+// Way_Calculator::Way_Calculator() {};
 
 // Default Deconstructor
 Way_Calculator::~Way_Calculator() {};

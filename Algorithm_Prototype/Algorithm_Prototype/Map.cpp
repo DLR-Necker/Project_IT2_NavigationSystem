@@ -4,12 +4,13 @@ using namespace::std;
 
 // Default Constructor
 Map::Map() {
-	this->mapType = none;												// Defines Map type
+	Map::generate_Network();										// initialization of the network from adjacent matrix given in "Network.h"
 }
 
 // Special Constructor
-Map::Map(type mapType, City* listCitys[], vector<vector<int>> network) {
-	this->mapType = mapType;
+Map::Map(array<City*, maxCitys> listCitys, array<Vertex, maxCitys> network) {
+	this->listCitys = listCitys;
+	this->network = network;
 }
 
 // Default Deconstructor
@@ -18,6 +19,15 @@ Map::~Map() {}
 /*----------------------------------------------------------------------
 							Methods
 -----------------------------------------------------------------------*/
+void Map::generate_Network() {
+	for (int i = 0; i < maxCitys; i++) {
+		Vertex* v = new Vertex();									// Default Constructor initializes totalCost with  max value of unsigned int
+		v->setName(citys[0]);										// citys[] is a list of cities provided in "Network.h"
+		v->setNeighbours(i);										// initializes the neighbours vector 
+		this->network[i] = *v;											// adding vertex to network array
+	}
+}
+
 vector<City*> Map::searchBestWay(City* start, City* end) {
 	vector<City*> bestWay;
 	return bestWay;

@@ -1,19 +1,24 @@
 #pragma once
-#include "Map.h"
+#include <vector>
+#include "Neighbours.h"
+#include "Network.h"
+using namespace::std;
 
 class Vertex
 {
 
 private:
-	unsigned int cost;
-	string name;			// To be retrieved from listCitys[]
+	string name;
+	unsigned int totalCost;		// holding total cost to reach this vertix from start vertix
+	vector<neighbour> neighbours;
+				    
 
 public:
 	// Default Constructor
 	Vertex();
 	
 	// Special Constructor
-	Vertex(unsigned int cost, string name);
+	Vertex(unsigned int totalCost, string name);
 
 	// Copy Constructor --> TO BE IMPLEMENTED
 
@@ -32,11 +37,19 @@ public:
 	*/
 
 	//Setter
-	void setCost(unsigned int cost);
+	void set_totalCost(unsigned int totalCost);
 	void setName(string name);
 
+	/*
+	This method searches for the neighbours of city based on the adjacent matrice provided in "Network.h"
+	@param	city		row of the city in the matrice for which neighbours are to be searched
+	@return void
+	*/
+	void setNeighbours(int city);
+
 	//Getter
-	unsigned int getCost();
+	unsigned int get_totalCost();
 	string getName();
+	vector<neighbour> getNeighbours();
 };
 
