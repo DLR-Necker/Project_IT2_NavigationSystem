@@ -7,7 +7,7 @@ class Path
 {
 private:
 	vector<City*> citysVisited;			// potential memory leak
-	unsigned int cost;
+	unsigned int totalCost;				// maybe union  is  better suited
 
 public:
 	// Default Constructor
@@ -24,11 +24,11 @@ public:
 	-----------------------------------------------------------------------*/
 	/*** Setter ***/
 	void setCitysVisited(vector<City*> citysVisited);
-	void setCost(unsigned int cost);
+	void setTotalCost(unsigned int totalCost);
 
 	/*** Getter ***/
 	vector<City*> getCitysVisited();
-	unsigned int getCost();
+	unsigned int getTotalCost();
 
 	/*
 	This method adds a city to the citysVisited vector
