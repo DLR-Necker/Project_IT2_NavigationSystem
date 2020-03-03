@@ -31,8 +31,7 @@ vector<City*> Path::getCitysVisited() {
 unsigned int Path::getCost() {
 	return this->cost;
 }
-
+/*** Additional Methods ***/
 void Path::add_CitytoPath(City* currentCity) {
 	this->citysVisited.push_back(currentCity);
-
 }
