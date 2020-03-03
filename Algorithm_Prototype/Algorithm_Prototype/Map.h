@@ -8,9 +8,10 @@ using namespace::std;
 class Map
 {
 private:
-	enum type { none, distance, time };
-	type mapType;
-	vector<vector<int>> network;
+	// enum type { none, distance, time };						// wird wahrscheinlich nicht benötigt; Map sollte beide Netzwerke initialisieren, um zur Laufzeit damit arbeiten zu könnnen
+	// type mapType; 
+	unsigned int network_distance[maxCitys][maxCitys];
+	unsigned int network_time[maxCitys][maxCitys];
 
 public:
 	// Attributes
@@ -20,7 +21,7 @@ public:
 	Map();
 
 	//Special Constructor
-	Map(type mapType, City* listCitys[maxCitys], vector<vector<int>> network);
+	Map(/*type mapType,*/ City* listCitys[maxCitys], vector<vector<int>> network);
 
 	// Default Deconstructor
 	~Map();
