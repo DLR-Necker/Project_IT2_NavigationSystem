@@ -1,0 +1,11 @@
+﻿  Calculator_BestWay.cpp
+  Preprocessor_BestWay.cpp
+  Way_Calculator.cpp
+  Code wird generiert...
+Map.obj : error LNK2005: "unsigned int (* network_time)[6]" (?network_time@@3PAY05IA) ist bereits in Algorithm_Prototype.obj definiert.
+Map.obj : error LNK2005: "unsigned int (* network_distance)[6]" (?network_distance@@3PAY05IA) ist bereits in Algorithm_Prototype.obj definiert.
+Map.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > * citys" (?citys@@3PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) ist bereits in Algorithm_Prototype.obj definiert.
+Vertex.obj : error LNK2005: "unsigned int (* network_time)[6]" (?network_time@@3PAY05IA) ist bereits in Algorithm_Prototype.obj definiert.
+Vertex.obj : error LNK2005: "unsigned int (* network_distance)[6]" (?network_distance@@3PAY05IA) ist bereits in Algorithm_Prototype.obj definiert.
+Vertex.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > * citys" (?citys@@3PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) ist bereits in Algorithm_Prototype.obj definiert.
+C:\Users\Marcel\Documents\Studium\Projektarbeiten\IT_Projekt\Project_IT2_NavigationSystem\Algorithm_Prototype\Debug\Algorithm_Prototype.exe : fatal error LNK1169: Mindestens ein mehrfach definiertes Symbol gefunden.
