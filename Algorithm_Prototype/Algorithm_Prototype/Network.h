@@ -13,7 +13,7 @@ using namespace::std;
 */
 
 const int maxCitys = 6;
-string citys[maxCitys] = { "Köln", "Berlin", "Rostock", "Frankfurt", "Muenchen", "Friedrichshafen" };
+string citys[maxCitys] = { "Koeln", "Berlin", "Rostock", "Frankfurt", "Muenchen", "Friedrichshafen" };
 
 // adjacent matrix representing travel times
 unsigned int network_time[maxCitys][maxCitys] = { {0, 2, 0, 2, 0, 0},

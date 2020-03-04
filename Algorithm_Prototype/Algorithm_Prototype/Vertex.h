@@ -9,8 +9,9 @@ class Vertex
 
 private:
 	string name;
-	unsigned int totalCost;		// holding total cost to reach this vertix from start vertix
-	vector<neighbour> neighbours;
+	unsigned int totalCost;				// holding total cost to reach this vertix from start vertix
+	vector<neighbour> neighbours;		// muss für einen Vector der Zuweisungsoperator angepasst werden; wird dieser als pointer behandelt?
+	bool visited;
 				    
 
 public:
@@ -20,10 +21,20 @@ public:
 	// Special Constructor
 	Vertex(unsigned int totalCost, string name);
 
-	// Copy Constructor --> TO BE IMPLEMENTED
+	// Copy Constructor 
+	Vertex(const Vertex &v);
 
 	// Default Deconstructor
 	~Vertex();
+
+	/*----------------------------------------------------------------------
+							Operators
+	-----------------------------------------------------------------------*/
+	// Allocator
+	Vertex operator=(const Vertex &V);
+
+	// Equality
+	bool operator==(const Vertex &v)
 
 	/*----------------------------------------------------------------------
 							Methods

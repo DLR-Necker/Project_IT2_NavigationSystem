@@ -7,7 +7,8 @@ using namespace::std;
 
 // Default Constructor
 Vertex::Vertex() {
-	this->totalCost = -1;	//max unsigned int value (65,335)	
+	this->totalCost = -1;	//max unsigned int value (65,335)
+	this->visited = 0;
 }
 
 // Special Constructor
@@ -16,10 +17,36 @@ Vertex::Vertex(unsigned int cost, string name) {
 	this->name = name;
 }
 
-// Copy Constructor --> TO BE IMPLEMENTED
+// Copy Constructor 
+Vertex::Vertex(const Vertex &v) {
+	name = v.name;
+	totalCost = v.totalCost;
+	neighbours = v.neighbours;
+	visited = v.visited;
+}
 
 // Default Deconstructor
 Vertex::~Vertex() {}
+
+/*----------------------------------------------------------------------
+						Operators
+-----------------------------------------------------------------------*/
+// Allocator
+Vertex Vertex::operator=(const Vertex &v) {
+	if (this != &v) {							// self-allocation test
+		name = v.name;
+		totalCost = v.totalCost;
+		neighbours = v.neighbours;
+		visited = v.visited;
+	}
+	return *this;								// dereferenced pointer to object Vertex
+}
+
+// Equality
+bool Vertex::operator==(const Vertex &v) {
+	
+}
+
 
 /*----------------------------------------------------------------------
 						Methods

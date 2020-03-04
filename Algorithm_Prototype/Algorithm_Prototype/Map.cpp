@@ -22,7 +22,7 @@ Map::~Map() {}
 void Map::generate_Network() {
 	for (int i = 0; i < maxCitys; i++) {
 		Vertex* v = new Vertex();									// Default Constructor initializes totalCost with  max value of unsigned int
-		v->setName(citys[0]);										// citys[] is a list of cities provided in "Network.h"
+		v->setName(citys[i]);										// citys[] is a list of cities provided in "Network.h"
 		v->setNeighbours(i);										// initializes the neighbours vector 
 		this->network[i] = *v;											// adding vertex to network array
 	}
