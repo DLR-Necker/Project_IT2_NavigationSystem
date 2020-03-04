@@ -41,5 +41,7 @@ public:
 
 	bool neighbours(City* currentCity, City* endCity);
 
+	virtual vector<Path*> findWay(City* start, City* end);
+
 };
 

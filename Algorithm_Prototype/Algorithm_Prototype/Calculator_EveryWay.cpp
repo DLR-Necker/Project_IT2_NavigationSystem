@@ -37,6 +37,11 @@ bool Calculator_EveryWay::neighbours(City* currentCity, City* endCity){
 
 }
 
+vector<Path*> Calculator_EveryWay::findWay(City * start, City * end)
+{
+	return vector<Path*>();
+}
+
 
 
 
