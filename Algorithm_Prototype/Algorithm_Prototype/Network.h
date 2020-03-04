@@ -17,7 +17,8 @@ string citys[maxCitys] = { "Koeln", "Berlin", "Rostock", "Frankfurt", "Muenchen"
 
 // adjacent matrix representing travel times
 unsigned int network_time[maxCitys][maxCitys] = { {0, 2, 0, 2, 0, 0},
-												  {2, 0, 1, 3, 0, 0},
+					
+{2, 0, 1, 3, 0, 0},
 												  {0, 1, 0, 0, 5, 8},
 												  {2, 3, 0, 0, 10, 4},
 												  {0, 0, 5, 10, 0, 2},

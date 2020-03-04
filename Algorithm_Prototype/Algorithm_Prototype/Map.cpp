@@ -8,10 +8,10 @@ Map::Map() {
 }
 
 // Special Constructor
-Map::Map(array<City*, maxCitys> listCitys, array<Vertex, maxCitys> network) {
-	this->listCitys = listCitys;
-	this->network = network;
-}
+/*
+Map::Map() {
+	
+}*/
 
 // Default Deconstructor
 Map::~Map() {}
@@ -19,23 +19,13 @@ Map::~Map() {}
 /*----------------------------------------------------------------------
 							Methods
 -----------------------------------------------------------------------*/
-void Map::generate_Network() {
-	for (int i = 0; i < maxCitys; i++) {
-		Vertex* v = new Vertex();									// Default Constructor initializes totalCost with  max value of unsigned int
-		v->setName(citys[i]);										// citys[] is a list of cities provided in "Network.h"
-		v->setNeighbours(i);										// initializes the neighbours vector 
-		this->network[i] = *v;											// adding vertex to network array
-	}
+
+
+void Map::searchBestWay(City* start, City* end) {
+	
+	
 }
 
-vector<Vertex> Map::searchBestWay(Vertex start, Vertex end) {
-	vector<Vertex> bestWay;
-	return bestWay;
-}
 
-vector<City*> Map::searchEveryWay(City* start, City* end) {
-	vector<City*> everyWay;
-	return everyWay;
-}
 
 

@@ -4,17 +4,19 @@
 #include <queue>
 
 class Calculator_BestWay :
-	protected Way_Calculator
+	public Way_Calculator
 {
 protected:
-	vector<Path> waysFound;
-	priority_queue<Vertex> priorityQueue;
+	priority_queue<int> priorityQueue;
 
 public:
 	// Default Constructor
 	Calculator_BestWay();
 
-	// Default Deconstructor
+	// Special Constructor
+	Calculator_BestWay();
+
+    // Default Deconstructor
 	~Calculator_BestWay();
 
 	/*----------------------------------------------------------------------
@@ -27,7 +29,7 @@ public:
 			end			end point
 	@return bestWay		result of the Dijksta-Algorithm
 	*/
-	vector<Path> search_BestWay(Vertex start, Vertex ende);
+	vector<Path> search_BestWay(int start, int ende);
 };
 
 

@@ -4,7 +4,6 @@
 #include <array>
 #include "City.h"
 #include "Network.h"
-#include "Vertex.h"
 using namespace::std;
 
 
@@ -14,11 +13,11 @@ private:
 	// enum type { none, distance, time };						// wird wahrscheinlich nicht benötigt; Map sollte beide Netzwerke initialisieren, um zur Laufzeit damit arbeiten zu könnnen
 	// type mapType; 
 
-	array<Vertex, maxCitys> network;							// array of vertices representing the map 
+																// array of vertices representing the map 
 
 public:
 	// Attributes
-	array<City*, maxCitys> listCitys;							// use of array<T,n> because usual Arrays can not be a return value -> needed for Constructor 
+	array<City*, maxCitys> listCitys[maxC];					   // use of array<T,n> because usual Arrays can not be a return value -> needed for Constructor 
 
 	// Default Constructor
 	Map();

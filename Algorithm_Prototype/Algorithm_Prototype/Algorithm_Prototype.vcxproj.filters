@@ -30,19 +30,10 @@
     <ClInclude Include="Calculator_BestWay.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Calculator_EveryWay.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Network.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Path.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Neighbours.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -63,12 +54,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Calculator_BestWay.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Calculator_EveryWay.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Vertex.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Path.cpp">

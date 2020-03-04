@@ -2,13 +2,12 @@
 #include <string>
 #include <vector>
 #include "City.h"
-#include "Vertex.h"
 using namespace::std;
 
 class Path
 {
 private:
-	vector<Vertex> citysOnPath;
+	vector<int> citysOnPath;
 	unsigned int totalCost;				// maybe union  is  better suited
 
 public:
@@ -16,7 +15,7 @@ public:
 	Path();
 
 	//Special Constructor
-	Path(vector<Vertex> citysOnPath, unsigned int cost);
+	Path(vector<int> citysOnPath, unsigned int cost);
 
 	// Destructor
 	~Path();
