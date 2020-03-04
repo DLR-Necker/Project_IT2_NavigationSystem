@@ -41,6 +41,8 @@ bool Calculator_EveryWay::neighbours(City* currentCity, City* endCity){
 
 
 
+
+
 /*
 
 {	

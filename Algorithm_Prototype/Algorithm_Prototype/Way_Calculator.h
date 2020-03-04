@@ -48,6 +48,6 @@ public:
 		@return void
 	*/
 
-
+	virtual vector<Path*> findWay(City* start, City* end);
 
 };

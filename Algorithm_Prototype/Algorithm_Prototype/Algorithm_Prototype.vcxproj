@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algorithm_Prototype.cpp" />
+    <ClCompile Include="Calculator_EveryWay.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Path.cpp" />
