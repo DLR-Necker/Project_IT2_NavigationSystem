@@ -1,9 +1,9 @@
 #include "pch.h"
 #include <iostream>
 #include <array>
-using namespace::std;
 #include "Network.h"
 #include "Map.h"
+using namespace::std;
 
 int main()
 {
@@ -12,5 +12,4 @@ int main()
 	Map map1 = Map();
 
 }
-
 

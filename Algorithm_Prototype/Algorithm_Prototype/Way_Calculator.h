@@ -3,15 +3,16 @@
 #include<vector>
 #include <string>
 #include "Path.h"
-//#include "Network.h"
+#include "Vertex.h"
+#include "Network.h"
 using namespace::std;
 
 class Way_Calculator
 {
 protected:
-	City* start;
-	City* ende;
-	vector<Path> waysFound;		// potential memory leak
+	Vertex start;
+	Vertex ende;
+	vector<Path> waysFound;
 
 public:
 	// Default Constructor

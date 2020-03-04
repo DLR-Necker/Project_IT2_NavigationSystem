@@ -158,7 +158,6 @@
     <ClInclude Include="Network.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Path.h" />
-    <ClInclude Include="Preprocessor_BestWay.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Way_Calculator.h" />
@@ -170,7 +169,6 @@
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Path.cpp" />
-    <ClCompile Include="Preprocessor_BestWay.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

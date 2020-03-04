@@ -2,11 +2,13 @@
 #include <string>
 #include <vector>
 #include "City.h"
+#include "Vertex.h"
+using namespace::std;
 
 class Path
 {
 private:
-	vector<City*> citysVisited;			// potential memory leak
+	vector<Vertex> citysOnPath;
 	unsigned int totalCost;				// maybe union  is  better suited
 
 public:
@@ -14,7 +16,7 @@ public:
 	Path();
 
 	//Special Constructor
-	Path(vector<City*> citysVisited, unsigned int cost);
+	Path(vector<Vertex> citysOnPath, unsigned int cost);
 
 	// Destructor
 	~Path();
@@ -23,11 +25,11 @@ public:
 							Methods
 	-----------------------------------------------------------------------*/
 	/*** Setter ***/
-	void setCitysVisited(vector<City*> citysVisited);
+	void set_citysOnPath(vector<Vertex> citysOnPath);
 	void setTotalCost(unsigned int totalCost);
 
 	/*** Getter ***/
-	vector<City*> getCitysVisited();
+	vector<Vertex> get_citysOnPath();
 	unsigned int getTotalCost();
 
 	/*
@@ -36,6 +38,7 @@ public:
 	@return void
 	*/
 
-	void add_CitytoPath(City* currentCity);
+	void add_CitytoPath(Vertex currentCity);
 };
+
 

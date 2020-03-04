@@ -28,8 +28,8 @@ void Map::generate_Network() {
 	}
 }
 
-vector<City*> Map::searchBestWay(City* start, City* end) {
-	vector<City*> bestWay;
+vector<Vertex> Map::searchBestWay(Vertex start, Vertex end) {
+	vector<Vertex> bestWay;
 	return bestWay;
 }
 

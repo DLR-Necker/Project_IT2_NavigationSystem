@@ -1,6 +1,5 @@
 #include "pch.h"
 #include <string>
-#include <array>
 #include "Vertex.h"
 using namespace::std;
 
@@ -42,9 +41,28 @@ Vertex Vertex::operator=(const Vertex &v) {
 	return *this;								// dereferenced pointer to object Vertex
 }
 
-// Equality
+// Equality 
 bool Vertex::operator==(const Vertex &v) {
-	
+	if (totalCost == v.totalCost) {				// check for totalCost of current Vertex against totalCost of Vertex v
+		return true;
+	}
+	else { return false; }
+}
+
+// Greater
+bool Vertex::operator>(const Vertex &v) {
+	if (totalCost > v.totalCost) {
+		return true;
+	}
+	else { return false; }
+}
+
+// Less 
+bool Vertex::operator<(const Vertex& v) {
+	if (totalCost < v.totalCost) {
+		return true;
+	}
+	else { return false; }
 }
 
 
