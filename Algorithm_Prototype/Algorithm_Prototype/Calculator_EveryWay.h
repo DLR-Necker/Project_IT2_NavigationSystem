@@ -6,10 +6,10 @@ using namespace::std;
 
 
 class Calculator_EveryWay :
-	protected Way_Calculator
+	public Way_Calculator
 {
 protected:
-	vector<Path> possiblePaths;
+
 
 public:
 	// Default Constructor
@@ -21,11 +21,6 @@ public:
 	/*----------------------------------------------------------------------
 							Methods
 	-----------------------------------------------------------------------*/
-	/*** Setter ***/
-	void setPossiblePaths(vector<Path> possiblePaths);
-
-	/*** Getter ***/
-	vector<Path> getPossiblePaths(); 
 
 	/*** Additional Methods ***/
 
@@ -35,16 +30,16 @@ public:
 	@return void					
 	*/
 
-	void add_PathtoPossiblePaths(Path currentPath);
+	void add_PathtoWaysFound(Path currentPath);
 
 	/*
-	This method finds all possible connections (paths) between start city and destination (end) city by means of backtracking.
+	This method finds all unvisited neighbours of the current city on the path 
 	@param	currentCity						The current city along the path whose unvisited neighbours are to be found
-	        end								Destination city (is always the same). Is obtained from Way_Calculator
-	@return possiblePaths					Vector of path objects that lead from start to end.
+	        endCity							Destination city (is always the same). Is obtained from Way_Calculator
+	@return bool							True, if an unvisited neighbour or endCity is found / False, if no unvisited neighbour is found
 	*/
 
-	Path everyWay(City* currentCity, City* end);
+	bool neighbours(City* currentCity, City* endCity);
 
 };
 

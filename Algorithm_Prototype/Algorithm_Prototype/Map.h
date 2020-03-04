@@ -18,7 +18,7 @@ private:
 	
 public:
 	// Attributes
-	array<City*, maxCitys> listCitys;							// use of array<T,n> because usual Arrays can not be a return value -> needed for Constructor 
+	City* listCitys[maxCitys];									// use of array<T,n> because usual Arrays can not be a return value -> needed for Constructor 
 
 	// Default Constructor
 	Map();

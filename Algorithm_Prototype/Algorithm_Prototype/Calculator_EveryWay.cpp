@@ -11,22 +11,38 @@ Calculator_EveryWay::~Calculator_EveryWay() {}
 /*----------------------------------------------------------------------
 						Methods
 -----------------------------------------------------------------------*/
-/*** Setter ***/
-void Calculator_EveryWay::setPossiblePaths(vector<Path> possiblePaths) {
-	this->possiblePaths = possiblePaths;
-}
-
-/*** Getter ***/
-vector<Path> Calculator_EveryWay::getPossiblePaths() {
-		return this->possiblePaths;
-}
 
 /*** Additional Methods ***/
-void Calculator_EveryWay::add_PathtoPossiblePaths(Path currentPath) {
-	this->possiblePaths.push_back(currentPath);
+
+void Calculator_EveryWay::add_PathtoWaysFound(Path currentPath) {
+	Way_Calculator::waysFound.push_back(currentPath);
 }
 
-Path Calculator_EveryWay::everyWay(City* currentCity, City* end)
+bool Calculator_EveryWay::neighbours(City* currentCity, City* endCity){
+
+	//Break Conditions: endCity is reached ; no unvisited neighbours
+	// Check, if either one condition is met: 
+
+	if (currentCity == endCity) {
+		//Store currentCity to Path
+		
+		// Store Path to waysFound
+		
+		return true; 
+	}
+
+	if (/*are neighbours of current city part of path?*/) {
+		return false;
+	}
+
+}
+
+
+
+
+
+/*
+
 {	
 	//Define map matrice to be used for calculation:
 	unsigned int currentDistance = Way_Calculator::network_distance[0][1];
@@ -54,10 +70,12 @@ Path Calculator_EveryWay::everyWay(City* currentCity, City* end)
 	} // 2nd break condition of search: no more unvisited neighbouring cities 
 	else if (...) {
 		
-	} // Search continous, because no break condition is met.
+	} // Search continues, because no break condition is met.
 	else {
 
 	}
 		return Path();
 
 }
+
+*/
