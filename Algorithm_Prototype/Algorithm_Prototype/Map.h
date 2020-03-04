@@ -19,7 +19,7 @@ public:
 	// Attributes
 	City* listCitys[maxCitys];									// use of array<T,n> because usual Arrays can not be a return value -> needed for Constructor 
 
-	int network[maxCitys][maxCitys];						
+	const int network[maxCitys][maxCitys];						// zu überlegen, um vor Manipulation zu schützen	
 
 	// Default Constructor
 	Map();

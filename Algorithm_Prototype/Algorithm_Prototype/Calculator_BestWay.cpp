@@ -21,7 +21,7 @@ vector<Path*> Calculator_BestWay::findWay(City * start, City * end)
 	/*** Initialization of Dijkstra ***/
 	initialize(start, end);
 
-	this->map. = 0;
+	
 
 	
 
