@@ -1,17 +1,14 @@
 #include "pch.h"
 #include "Map.h"
+#include "Calculator_BestWay.h"
 using namespace::std;
 
 // Default Constructor
-Map::Map() {
-	Map::generate_Network();										// initialization of the network from adjacent matrix given in "Network.h"
-}
+Map::Map() {}
+									
 
 // Special Constructor
-Map::Map(array<City*, maxCitys> listCitys, array<Vertex, maxCitys> network) {
-	this->listCitys = listCitys;
-	this->network = network;
-}
+
 
 // Default Deconstructor
 Map::~Map() {}
@@ -19,22 +16,13 @@ Map::~Map() {}
 /*----------------------------------------------------------------------
 							Methods
 -----------------------------------------------------------------------*/
-void Map::generate_Network() {
-	for (int i = 0; i < maxCitys; i++) {
-		Vertex* v = new Vertex();									// Default Constructor initializes totalCost with  max value of unsigned int
-		v->setName(citys[i]);										// citys[] is a list of cities provided in "Network.h"
-		v->setNeighbours(i);										// initializes the neighbours vector 
-		this->network[i] = *v;											// adding vertex to network array
-	}
+
+vector<Path> Map::searchBestWay(City* start, City* end) {
+	return ( new Calculator_BestWay(this))->findWay(start, end);
 }
 
-vector<City*> Map::searchBestWay(City* start, City* end) {
-	vector<City*> bestWay;
-	return bestWay;
-}
-
-vector<City*> Map::searchEveryWay(City* start, City* end) {
-	vector<City*> everyWay;
+vector<Path> Map::searchEveryWay(City* start, City* end) {
+	vector<Path> everyWay;
 	return everyWay;
 }
 

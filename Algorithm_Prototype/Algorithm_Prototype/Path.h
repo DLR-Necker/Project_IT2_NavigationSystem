@@ -6,7 +6,7 @@
 class Path
 {
 private:
-	vector<City*> citysVisited;			// potential memory leak
+	vector<City*> citysOnPath;			// potential memory leak
 	unsigned int totalCost;				// maybe union  is  better suited
 
 public:
@@ -14,7 +14,7 @@ public:
 	Path();
 
 	//Special Constructor
-	Path(vector<City*> citysVisited, unsigned int cost);
+	Path(vector<City*> citysOnPath, unsigned int cost);
 
 	// Destructor
 	~Path();
@@ -23,11 +23,11 @@ public:
 							Methods
 	-----------------------------------------------------------------------*/
 	/*** Setter ***/
-	void setCitysVisited(vector<City*> citysVisited);
+	void set_citysOnPath(vector<City*> citysOnPath);
 	void setTotalCost(unsigned int totalCost);
 
 	/*** Getter ***/
-	vector<City*> getCitysVisited();
+	vector<City*> get_citysOnPath();
 	unsigned int getTotalCost();
 
 	/*

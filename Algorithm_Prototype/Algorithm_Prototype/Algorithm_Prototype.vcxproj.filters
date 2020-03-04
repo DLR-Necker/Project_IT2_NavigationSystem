@@ -36,7 +36,7 @@
     <ClInclude Include="Path.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Neighbours.h">
+    <ClInclude Include="Calculator_BestWay.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -60,6 +60,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Calculator_EveryWay.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator_BestWay.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
