@@ -2,6 +2,7 @@
 
 #include <queue>
 #include "Way_Calculator.h"
+#include "Node.h"
 using namespace::std;
 
 class Calculator_BestWay :
@@ -10,11 +11,7 @@ class Calculator_BestWay :
 protected:
 	vector<Path> waysFound;								// Path object stores visited Cities in order together with their total Cost from start
 	priority_queue<int> pq;								// Priority Queue needed for Dijekstra algorithm
-	struct nodeData { bool visited;						// contains all relevant Data for Dijkstra algorithm
-					  unsigned int tentativeCost;		
-				      int predecessor;  
-				    };
-	nodeData nodes[maxCitys];							// Collector of all knots with their corresponding data
+	Node nodes[maxCitys];								// Collector of all knots with their corresponding data
 
 
 

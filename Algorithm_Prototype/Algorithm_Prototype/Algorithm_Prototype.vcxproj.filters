@@ -39,6 +39,9 @@
     <ClInclude Include="Calculator_BestWay.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -63,6 +66,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Calculator_BestWay.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -20,6 +20,9 @@ vector<Path*> Calculator_BestWay::findWay(City * start, City * end)
 {
 	/*** Initialization of Dijkstra ***/
 	initialize(start, end);
+	
+	int currentNode = this->start;
+	
 
 	
 
@@ -37,12 +40,17 @@ void  Calculator_BestWay::initialize(City* start, City* end) {
 
 	// Initialize knots before algorithm starts; set tentative cost of all knots except start to max unsigned int value (4,294,967,295) 
 	for (int i = 0; i < maxCitys; i++) {
+		Node* node = new Node();
+
 		if (i = this->start) {
-			nodes[i].tentativeCost = 0;
+			node->set_tentativeCost(0);	
 		}
-		nodes[i].visited = false;
-		nodes[i].tentativeCost = -1;
-		nodes[i].predecessor = -1;				// -1: no predecesor at the moment; only set when shortest way found from start to current node via predecessor  
+		else {
+			node->set_tentativeCost(-1);
+		}
+		node->setVisited(false);
+		node->setPredecessor(-1);				// -1: no predecesor at the moment; only set when shortest way found from start to current node via predecessor
+		nodes[i] = *node;
 	}
 
 }
