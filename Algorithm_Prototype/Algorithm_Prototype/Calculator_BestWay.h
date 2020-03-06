@@ -9,7 +9,6 @@ class Calculator_BestWay :
 	protected Way_Calculator
 {
 protected:
-	vector<Path> waysFound;										// Path object stores visited Cities in order together with their total Cost from start
 	priority_queue<Node*, vector<Node*>, greater<Node*> > pq;								// Priority Queue needed for Dijekstra algorithm
 	Node* nodes[maxCitys];										// Collector of all knots with their corresponding data
 
@@ -68,6 +67,8 @@ public:
 	@return void
 	*/
 	void update_NodeCost(Node* currentNode, int i);
+
+	void generatePath(Node* nodes[]);
 };
 
 

@@ -26,7 +26,7 @@ Path* Calculator_BestWay::findWay(City * start, City * end)
 	Node* currentNode = nodes[this->start_index];								// Initialization of start node
 	pq.push(currentNode);
 
-
+	/*** Start of Dijkstra ***/
 	while ( currentNode->getIndex() != this->end_index ) {						// if current node is set to end point, its shortest distance from start is known
 		currentNode = pq.top();													// updates current node to "cheapest" element in pq 
 		nodes[currentNode->getIndex()]->setVisited(true);						// marks current node as visited
@@ -53,14 +53,17 @@ Path* Calculator_BestWay::findWay(City * start, City * end)
 		}
 	}
 
+	/*** Creating a Path object from the Results ***/
+	/*
+		nodes[] now contains nodes with all relevant information needed: tentative costs, predecessor 
+	*/
+
+
+
+
 	/*
 
-		1  Methode distanz_update(u, v, abstand[], vorgänger[]) :
-		2      alternativ : = abstand[u] + abstand_zwischen(u, v)   // Weglänge vom Startknoten nach v über u
-		3      falls alternativ < abstand[v] :
-		4          abstand[v] : = alternativ
-		5          vorgänger[v] : = u
-		Falls man nur am kürzesten Weg zwischen zwei Knoten interessiert ist, kann man den Algorithmus nach Zeile 5 der Dijkstra - Funktion abbrechen lassen, falls u = Zielknoten ist.
+		
 
 		Den kürzesten Weg zu einem Zielknoten kann man nun durch Iteration über die vorgänger ermitteln :
 
@@ -124,4 +127,18 @@ void Calculator_BestWay::update_NodeCost(Node* currentNode, int i) {
 
 	currentNode->getNeighbours()[i]->set_tentativeCost(this->map->network[currentNode->getIndex()][i]);			// update of tentative cost
 	currentNode->getNeighbours()[i]->setPredecessor(currentNode);												// update of predecessor
+}
+
+void Calculator_BestWay::generatePath(Node* nodes[]) {
+	Path result = Path();													// Generate Path object 
+
+	result.setTotalCost(nodes[this->end_index]->get_tentativeCost());		// set its total cost to the value stored in end node
+
+	int iter = this->end_index;												// create iterator and set it to end_index
+
+	while (nodes[iter]->getPredecessor() != NULL) {							// Iteration over nodes[] array; NULL: start node found (no predecessor)
+		result.add_CitytoPath(map->listCitys[nodes[iter]->getIndex()]);		// uses index of current node to retrieve pointer to city from listCitys 
+	}
+
+	this->waysFound.push_back(result);										// add result path to vector waysFound
 }

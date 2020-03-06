@@ -42,12 +42,20 @@ public:
 	-----------------------------------------------------------------------*/
 
 	/*
+		This method calculates the cheapest way from start to end throughout the network
+		@param	start					start City
+				end						end City
+		@return Path*					pointer on generated Path object representing the result 
+	*/
+
+	virtual Path* findWay(City* start, City* end);
+
+	/*
 		This method converts start and end city based on their names in listCitys into indices based on listCitys
 		@param	start					start City
 				end						end City
 		@return void
 	*/
-
-	virtual Path* findWay(City* start, City* end);
+	virtual void printPath(vector<Path> waysFound);
 
 };

@@ -34,4 +34,8 @@ Path* Way_Calculator::findWay(City * start, City * end)
 	Path* p = new Path();
 	return p;
 }
-;
+
+void Way_Calculator::printPath(vector<Path> waysFound) {
+	cout << "Fehlende Methode in der Subklasse!" << endl;
+}
+

@@ -11,7 +11,9 @@ Path::Path(vector<City*> citysOnPath, unsigned int totalCost) {
 }
 
 // Destructor
-Path::~Path() {}
+Path::~Path() {
+	//vector city delete
+}
 
 /*----------------------------------------------------------------------
 						Methods
