@@ -9,9 +9,9 @@ class Calculator_BestWay :
 	protected Way_Calculator
 {
 protected:
-	vector<Path> waysFound;								// Path object stores visited Cities in order together with their total Cost from start
-	priority_queue<int> pq;								// Priority Queue needed for Dijekstra algorithm
-	Node nodes[maxCitys];								// Collector of all knots with their corresponding data
+	vector<Path> waysFound;										// Path object stores visited Cities in order together with their total Cost from start
+	priority_queue<Node*, vector<Node*>, greater<Node*> > pq;								// Priority Queue needed for Dijekstra algorithm
+	Node* nodes[maxCitys];										// Collector of all knots with their corresponding data
 
 
 
@@ -23,7 +23,8 @@ public:
 	Calculator_BestWay(Map* map);
 	
 	// Default Deconstructor
-	~Calculator_BestWay();
+	~Calculator_BestWay(// über nodes Array iterieren und Knotenobjekte löschen
+	);
 
 
 	/*----------------------------------------------------------------------
@@ -37,7 +38,7 @@ public:
 				end						end City
 		@return bestWay					vector of best ways found
 	*/
-	virtual vector<Path*> findWay(City* start, City* end);
+	virtual Path* findWay(City* start, City* end);
 
 	/*
 		This method initialize the Dijkstra algorithm
@@ -47,6 +48,26 @@ public:
 	*/
 	void initialize(City * start, City * end);
 
+	/*
+	This method searches all unvisited neighbours of a Node Object
+	@param	currentNode		pointer on current node
+	@return void
+	*/
+	void get_unvisitedNeighbours(Node* currentNode);
+
+	/*
+	This method checks if a neighbour object of the current node can be reached faster via the latter.
+	@param	currentNode		pointer on current node
+	@return void
+	*/
+	bool check_ShorterDistance(Node* currentNode, int i);
+
+	/*
+	This method updates cost and predecessor of a neighbour
+	@param	currentNode		pointer on current node
+	@return void
+	*/
+	void update_NodeCost(Node* currentNode, int i);
 };
 
 

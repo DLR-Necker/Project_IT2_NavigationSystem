@@ -10,8 +10,8 @@ using namespace::std;
 class Way_Calculator
 {
 protected:
-	int start;
-	int ende;
+	int start_index;
+	int end_index;
 	vector<Path> waysFound;		// potential memory leak
 	Map* map;
 
@@ -48,6 +48,6 @@ public:
 		@return void
 	*/
 
-	virtual vector<Path*> findWay(City* start, City* end);
+	virtual Path* findWay(City* start, City* end);
 
 };

@@ -28,9 +28,10 @@ int Way_Calculator::cityToIndex(City* city) {
 	return i;
 }
 
-vector<Path*> Way_Calculator::findWay(City * start, City * end)
+Path* Way_Calculator::findWay(City * start, City * end)
 {
 	cout << "Fehlende Methode in der Subklasse!" << endl;
-	return vector<Path*>();
+	Path* p = new Path();
+	return p;
 }
 ;

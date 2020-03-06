@@ -17,7 +17,7 @@ Map::~Map() {}
 							Methods
 -----------------------------------------------------------------------*/
 
-vector<Path> Map::searchBestWay(City* start, City* end) {
+Path Map::searchBestWay(City* start, City* end) {
 	return ( new Calculator_BestWay(this))->findWay(start, end);
 }
 
