@@ -57,7 +57,8 @@ Path* Calculator_BestWay::findWay(City * start, City * end)
 	/*
 		nodes[] now contains nodes with all relevant information needed: tentative costs, predecessor 
 	*/
-
+	
+	generatePath(nodes);
 
 
 
