@@ -8,7 +8,9 @@ Calculator_BestWay::Calculator_BestWay(){}
 Calculator_BestWay::Calculator_BestWay(Map* map):Way_Calculator(map) {}
 
 // Default Deconstructor
-Calculator_BestWay::~Calculator_BestWay() {}
+Calculator_BestWay::~Calculator_BestWay() {
+	// Delete nodes[] --> Pointer Array	
+}
 
 
 /*----------------------------------------------------------------------
