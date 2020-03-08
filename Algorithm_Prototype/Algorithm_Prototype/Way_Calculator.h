@@ -15,7 +15,7 @@ protected:
 	int start_index;
 	int end_index;
 	vector<Path> waysFound;		
-	Map* map = NULL;
+	Map* map;
 
 	/*----------------------------------------------------------------------
 								Methods

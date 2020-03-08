@@ -1,5 +1,8 @@
 #include "pch.h"
 #include "Map.h"
+#include "Way_Calculator.h"
+#include "Calculator_BestWay.h"
+#include "Calculator_EveryWay.h"
 #include <iostream>
 
 

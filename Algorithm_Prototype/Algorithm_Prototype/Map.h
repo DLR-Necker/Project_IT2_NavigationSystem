@@ -6,9 +6,7 @@
 #include "City.h"
 #include "Network.h"
 #include "Path.h"
-#include "Way_Calculator.h"
-#include "Calculator_BestWay.h"
-#include "Calculator_EveryWay.h"
+
 using namespace::std;
 
 class Map

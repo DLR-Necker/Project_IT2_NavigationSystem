@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Calculator_BestWay.h"
 
+
+
 // Default Constructor
 Calculator_BestWay::Calculator_BestWay(){}
 
@@ -27,6 +29,8 @@ Path* Calculator_BestWay::findWay(City * start, City * end)
 	pq.push(currentNode);
 
 	/*** Start of Dijkstra ***/
+	cout << "Beginne mit Dijkstra" << endl;
+
 	while ( currentNode->getIndex() != this->end_index ) {						// if current node is set to end point, its shortest distance from start is known
 		currentNode = pq.top();													// updates current node to "cheapest" element in pq 
 		nodes[currentNode->getIndex()]->setVisited(true);						// marks current node as visited
@@ -36,23 +40,26 @@ Path* Calculator_BestWay::findWay(City * start, City * end)
 		get_unvisitedNeighbours(currentNode);									// searching all unvisited neighbours and inserting them into neighbours vector of current node
 
 		for (unsigned int i = 0; i < currentNode->getNeighbours().size(); i++) {
-			if (currentNode->getNeighbours()[i]->getMemberPQ() 
-				&& check_ShorterDistance(currentNode, i)) {						// retruns true if neighbour is element of pq && tentative cost for neighbour is less via current node 
+			Node* neighbour = currentNode->getNeighbours()[i];
+			if ((neighbour->getMemberPQ()) 
+				&& (check_ShorterDistance(currentNode, neighbour))) {						// retruns true if neighbour is element of pq && tentative cost for neighbour is less via current node 
 
-				update_NodeCost(currentNode, i);
-
+				update_NodeCost(currentNode, neighbour);
+				pq.push(neighbour);
 			}
-
+			/*
 			else {
 				update_NodeCost(currentNode, i);
 			}
 
 			currentNode->getNeighbours()[i]->setMemberPQ(true);
 			pq.push(currentNode->getNeighbours()[i]);																	// inserting neighbour in pq
-			
+			*/
 		}
 	}
 
+	cout << "Pfad gefunden" << endl;
+	
 	/*** Creating a Path object from the Results and printing it
 	 nodes[] now contains nodes with all relevant information needed: tentative costs, predecessor 
 	*/
@@ -68,15 +75,18 @@ void  Calculator_BestWay::initialize(City* start, City* end) {
 	this->end_index = cityToIndex(end);
 
 	// Initialize knots before algorithm starts; set tentative cost of all knots except start to max unsigned int value (4,294,967,295) 
+	cout << "Initializiere Dijekstra..." << endl;
 	for (int i = 0; i < maxCitys; i++) {
 		Node* node = new Node();
 
-		if (i = this->start_index) {
+		if (i == this->start_index) {
+			//cout << "Start gefunden" << endl;
 			node->set_tentativeCost(0);	
 		}
 		else {
 			node->set_tentativeCost(-1);		// Max uint value
 		}
+		//cout << "Set index" << endl;
 		node->setIndex(i);						// index needed to maintain assignment when used in priority queue
 		node->setVisited(false);
 		node->setMemberPQ(false);
@@ -87,37 +97,44 @@ void  Calculator_BestWay::initialize(City* start, City* end) {
 
 void Calculator_BestWay::get_unvisitedNeighbours(Node* currentNode) {
 	for (int i = 0; i < maxCitys; i++) {
-			if ((this->map->network[currentNode->getIndex()][i] > 0) && (!nodes[i]->getVisited())) {											// checks network row if entry is greater than 0 -> neighbour of current node and if neighbour has already been visited 		
+			if ((this->map->network[currentNode->getIndex()][i] > 0) && !(nodes[i]->getVisited())) {											// checks network row if entry is greater than 0 -> neighbour of current node and if neighbour has already been visited 		
 				currentNode->setNeighbour(nodes[i]);
+				nodes[i]->setMemberPQ(true);
 			}
 	}
 }
 
 	
-bool Calculator_BestWay::check_ShorterDistance(Node* currentNode, int i) {
-	if (currentNode->getNeighbours()[i]->get_tentativeCost() > (currentNode->getNeighbours()[i]->get_tentativeCost())		// checks if tentative cost is less via current node
-															+ (this->map->network[currentNode->getIndex()][i])) {
+bool Calculator_BestWay::check_ShorterDistance(Node* currentNode, Node* neighbour) {
+	if ((neighbour->get_tentativeCost()) > (currentNode->get_tentativeCost())					// checks if tentative cost is less via current node
+															+ (map->network[currentNode->getIndex()][neighbour->getIndex()])) {
 			return true;
 	}
 		else { return false; }
 }
 
-void Calculator_BestWay::update_NodeCost(Node* currentNode, int i) {
+void Calculator_BestWay::update_NodeCost(Node* currentNode, Node* neighbour) {
 
-	currentNode->getNeighbours()[i]->set_tentativeCost(this->map->network[currentNode->getIndex()][i]);			// update of tentative cost
-	currentNode->getNeighbours()[i]->setPredecessor(currentNode);												// update of predecessor
+	neighbour->setPredecessor(currentNode);																							// update of predecessor must stand before set_tentativeCost!!
+	neighbour->update_tentativeCost(map->network[currentNode->getIndex()][neighbour->getIndex()]);									// update of tentative cost
+	
 }
 
 void Calculator_BestWay::generatePath(Node* nodes[]) {
+	cout << "Generiere nun den Pfad " << endl;
 	Path result = Path();													// Generate Path object 
 
-	result.setTotalCost(nodes[this->end_index]->get_tentativeCost());		// set its total cost to the value stored in end node
+	result.setTotalCost(nodes[end_index]->get_tentativeCost());		// set its total cost to the value stored in end node
+	cout << "Gesamtkosten: " << result.getTotalCost() << endl;
 
-	int iter = this->end_index;												// create iterator and set it to end_index
+	int iter = end_index;												// create iterator and set it to end_index
 
 	while (nodes[iter]->getPredecessor() != NULL) {							// Iteration over nodes[] array; NULL: start node found (no predecessor)
+		cout << "Fuege Node hinzu: " << map->listCitys[nodes[iter]->getIndex()]->getName() << endl;
 		result.add_CitytoPath(map->listCitys[nodes[iter]->getIndex()]);		// uses index of current node to retrieve pointer to city from listCitys 
+		iter = nodes[iter]->getPredecessor()->getIndex();
+		cout << "Vorgaenger Node: " << nodes[iter]->getIndex() << endl;
 	}
 
-	this->waysFound.push_back(result);										// add result path to vector waysFound
+	waysFound.push_back(result);										// add result path to vector waysFound
 }

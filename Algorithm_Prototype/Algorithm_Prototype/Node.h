@@ -9,9 +9,9 @@ class Node
 private:
 	unsigned int index;
 	bool visited;
-	bool member_pq = false;							// becomes true when inserted into priority queue (pq)
+	bool member_pq;							// becomes true when inserted into priority queue (pq)
 	unsigned int tentativeCost;
-	Node* predecessor = new Node();
+	Node* predecessor;
 	vector<Node*> neighbours;
 
 public:
@@ -41,7 +41,13 @@ public:
 	Node* getPredecessor();
 	vector<Node*> getNeighbours();
 
-	
+
+	/*
+	This method updates the tentative cost of a Node Object
+	@param	tentativeCost		(UINT) value to be added
+	@return void
+	*/
+	void update_tentativeCost(unsigned int tentativeCost);
 
 	/*--------------------------------------------------------------
 							Operators

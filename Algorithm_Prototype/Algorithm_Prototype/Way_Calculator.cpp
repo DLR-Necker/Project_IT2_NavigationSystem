@@ -35,6 +35,7 @@ Path* Way_Calculator::findWay(City * start, City * end)
 }
 
 void Way_Calculator::print_waysFound() {
+
 	for (unsigned int i = 0; i < waysFound.size(); i++) {
 
 		for (unsigned int j = 0; j < waysFound[i].get_citysOnPath().size(); j++) {

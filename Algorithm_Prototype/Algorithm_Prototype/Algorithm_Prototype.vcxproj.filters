@@ -74,8 +74,5 @@
     <ClCompile Include="Map.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="testMain.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

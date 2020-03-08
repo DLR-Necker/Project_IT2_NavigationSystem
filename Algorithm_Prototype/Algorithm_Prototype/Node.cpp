@@ -1,8 +1,12 @@
 #include "pch.h"
+#include <iostream>
 #include "Node.h"
 
+
 // Default Constructor
-Node::Node() {}
+Node::Node() {
+	//cout << "Erstelle einen Node" << endl;
+}
 
 // Special Constructor 
 Node::Node(int index, bool visited, unsigned int tentativeCost, Node* predecessor){}
@@ -24,8 +28,9 @@ void Node::setMemberPQ(bool member_pq) {
 	this->member_pq = member_pq;
 }
 
+
 void Node::set_tentativeCost(unsigned int tentativeCost) {
-	this->tentativeCost += tentativeCost;
+	this->tentativeCost = tentativeCost;
 }
 
 void Node::setPredecessor(Node* predecessor) {
@@ -57,8 +62,13 @@ Node* Node::getPredecessor() {
 	return this->predecessor;
 }
 
-std::vector<Node*> Node::getNeighbours() {
+vector<Node*> Node::getNeighbours() {
 	return this->neighbours;
+}
+
+
+void Node::update_tentativeCost(unsigned int tentativeCost) {
+	this->tentativeCost = this->getPredecessor()->get_tentativeCost() + tentativeCost;
 }
 
 

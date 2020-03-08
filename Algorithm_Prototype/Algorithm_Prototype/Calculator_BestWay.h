@@ -4,14 +4,17 @@
 
 
 #include <queue>
+#include <iostream>
 #include "Way_Calculator.h"
 #include "Node.h"
+using namespace::std;
+
 
 class Calculator_BestWay :
 	public Way_Calculator
 {
 protected:
-	std::priority_queue<Node*, std::vector<Node*>, greater<Node*> > pq;								// Priority Queue needed for Dijekstra algorithm
+	priority_queue<Node*, vector<Node*>, less<Node*> > pq;								// Priority Queue needed for Dijekstra algorithm
 	Node* nodes[maxCitys];										// Collector of all knots with their corresponding data
 
 
@@ -61,14 +64,14 @@ public:
 	@param	currentNode		pointer on current node
 	@return void
 	*/
-	bool check_ShorterDistance(Node* currentNode, int i);
+	bool check_ShorterDistance(Node* currentNode, Node* neighbour);
 
 	/*
 	This method updates cost and predecessor of a neighbour
 	@param	currentNode		pointer on current node
 	@return void
 	*/
-	void update_NodeCost(Node* currentNode, int i);
+	void update_NodeCost(Node* currentNode, Node* neighbour);
 
 	void generatePath(Node* nodes[]);
 };
