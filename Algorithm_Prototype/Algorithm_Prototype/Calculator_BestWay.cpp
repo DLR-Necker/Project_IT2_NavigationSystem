@@ -35,7 +35,7 @@ Path* Calculator_BestWay::findWay(City * start, City * end)
 
 		get_unvisitedNeighbours(currentNode);									// searching all unvisited neighbours and inserting them into neighbours vector of current node
 
-		for (int i = 0; i < currentNode->getNeighbours().size(); i++) {
+		for (unsigned int i = 0; i < currentNode->getNeighbours().size(); i++) {
 			if (currentNode->getNeighbours()[i]->getMemberPQ() 
 				&& check_ShorterDistance(currentNode, i)) {						// retruns true if neighbour is element of pq && tentative cost for neighbour is less via current node 
 
@@ -53,33 +53,11 @@ Path* Calculator_BestWay::findWay(City * start, City * end)
 		}
 	}
 
-	/*** Creating a Path object from the Results ***/
-	/*
-		nodes[] now contains nodes with all relevant information needed: tentative costs, predecessor 
+	/*** Creating a Path object from the Results and printing it
+	 nodes[] now contains nodes with all relevant information needed: tentative costs, predecessor 
 	*/
-	
 	generatePath(nodes);
-
-
-
-	/*
-
-		
-
-		Den kürzesten Weg zu einem Zielknoten kann man nun durch Iteration über die vorgänger ermitteln :
-
-	1  Funktion erstelleKürzestenPfad(Zielknoten, vorgänger[])
-		2   Weg[] : = [Zielknoten]
-		3   u : = Zielknoten
-		4   solange vorgänger[u] nicht null :   // Der Vorgänger des Startknotens ist null
-	5       u : = vorgänger[u]
-		6       füge u am Anfang von Weg[] ein
-		7   return Weg[]
-	
-	*/
-	
-
-
+	print_waysFound();
 
 	return new Path();
 }
@@ -109,7 +87,7 @@ void  Calculator_BestWay::initialize(City* start, City* end) {
 
 void Calculator_BestWay::get_unvisitedNeighbours(Node* currentNode) {
 	for (int i = 0; i < maxCitys; i++) {
-			if (this->map[currentNode->getIndex][i] > 0 && !nodes[i]->getVisited) {											// checks network row if entry is greater than 0 -> neighbour of current node and if neighbour has already been visited 		
+			if ((this->map->network[currentNode->getIndex()][i] > 0) && (!nodes[i]->getVisited())) {											// checks network row if entry is greater than 0 -> neighbour of current node and if neighbour has already been visited 		
 				currentNode->setNeighbour(nodes[i]);
 			}
 	}
@@ -117,8 +95,8 @@ void Calculator_BestWay::get_unvisitedNeighbours(Node* currentNode) {
 
 	
 bool Calculator_BestWay::check_ShorterDistance(Node* currentNode, int i) {
-	if (currentNode->getNeighbours()[i]->get_tentativeCost > currentNode->getNeighbours()[i]->get_tentativeCost()		// checks if tentative cost is less via current node
-															+ this->map->network[currentNode->getIndex()][i]) {
+	if (currentNode->getNeighbours()[i]->get_tentativeCost() > (currentNode->getNeighbours()[i]->get_tentativeCost())		// checks if tentative cost is less via current node
+															+ (this->map->network[currentNode->getIndex()][i])) {
 			return true;
 	}
 		else { return false; }

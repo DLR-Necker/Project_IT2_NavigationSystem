@@ -1,31 +1,40 @@
-#pragma once
+#ifndef _WAYCALC_
+#define _WAYCALC_
+
 
 #include<vector>
 #include <string>
 #include "Path.h"
 #include "Map.h"
-//#include "Network.h"
-using namespace::std;
+#include "utility.h"
+
 
 class Way_Calculator
 {
 protected:
 	int start_index;
 	int end_index;
-	vector<Path> waysFound;		// potential memory leak
-	Map* map;
+	vector<Path> waysFound;		
+	Map* map = NULL;
 
 	/*----------------------------------------------------------------------
 								Methods
 	-----------------------------------------------------------------------*/
 
 	/*
-		This method converts start and end city based on their names in listCitys into indices based on listCitys
-		@param	start					start City
-				end						end City
-		@return void
+		This method converts a city from listCitys based on its name value into its index.
+		@param	city					City to be indexed
+		@return int	
 	*/
 	int cityToIndex(City* city);
+
+
+	/*
+		This method prints the given path vector containing pointers to city objects to the console.  
+		@param	waysFound		vector with result paths
+		@return void
+	*/
+	void print_waysFound();
 
 public:
 	// Default Constructor
@@ -42,20 +51,14 @@ public:
 	-----------------------------------------------------------------------*/
 
 	/*
-		This method calculates the cheapest way from start to end throughout the network
+		This method finds a possible way between start and end. 
+		If called from Calculator_BestWay, the cheapest path is calculated and returned.
 		@param	start					start City
 				end						end City
 		@return Path*					pointer on generated Path object representing the result 
 	*/
 
 	virtual Path* findWay(City* start, City* end);
-
-	/*
-		This method converts start and end city based on their names in listCitys into indices based on listCitys
-		@param	start					start City
-				end						end City
-		@return void
-	*/
-	virtual void printPath(vector<Path> waysFound);
-
+	
 };
+#endif

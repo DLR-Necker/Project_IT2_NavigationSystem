@@ -1,15 +1,17 @@
-#pragma once
+#ifndef _CalcBW_
+#define _CalcBW_
+
+
 
 #include <queue>
 #include "Way_Calculator.h"
 #include "Node.h"
-using namespace::std;
 
 class Calculator_BestWay :
-	protected Way_Calculator
+	public Way_Calculator
 {
 protected:
-	priority_queue<Node*, vector<Node*>, greater<Node*> > pq;								// Priority Queue needed for Dijekstra algorithm
+	std::priority_queue<Node*, std::vector<Node*>, greater<Node*> > pq;								// Priority Queue needed for Dijekstra algorithm
 	Node* nodes[maxCitys];										// Collector of all knots with their corresponding data
 
 
@@ -37,7 +39,7 @@ public:
 				end						end City
 		@return bestWay					vector of best ways found
 	*/
-	virtual Path* findWay(City* start, City* end);
+	Path* findWay(City* start, City* end);
 
 	/*
 		This method initialize the Dijkstra algorithm
@@ -71,4 +73,5 @@ public:
 	void generatePath(Node* nodes[]);
 };
 
+#endif 
 

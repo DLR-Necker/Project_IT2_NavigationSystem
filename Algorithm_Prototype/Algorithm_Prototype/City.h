@@ -1,16 +1,15 @@
-#pragma once
+#ifndef _CITY_
+#define _CITY_
+
 
 #include <string>
-#include "pch.h"
-
-
 using namespace::std;
 
 class City
 {
 private:
-	string name;
-	string country;
+	std::string name;
+	std::string country;
 	int population;
 
 public:
@@ -18,7 +17,7 @@ public:
 	City();
 
 	// Special Constructor
-	City(string name, string country, int population);
+	City(std::string name, std::string country, int population);
 
 	// Default Deconstructor
 	~City();
@@ -27,13 +26,14 @@ public:
 							Methods
 	-----------------------------------------------------------------------*/
 	/*** Setter ***/
-	void setName(string name);
-	void setCountry(string country);
+	void setName(std::string name);
+	void setCountry(std::string country);
 	void setPopulation(int population);
 
 	/*** Getter ***/
-	string getName();
-	string getCountry();
+	std::string getName();
+	std::string getCountry();
 	int getPopulation();
 };
 
+#endif

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _NETWORK_
+#define _NETWORK_
+
 #include <string>
 using namespace::std;
 
@@ -12,6 +14,7 @@ using namespace::std;
 5: Friedrichshafen
 */
 
-const int maxCitys = 6;
-string citys[maxCitys] = { "Koeln", "Berlin", "Rostock", "Frankfurt", "Muenchen", "Friedrichshafen" };
+const int maxCitys = 7;
+static string citys[maxCitys] = { "Koeln", "Berlin", "Rostock", "Schwerin", "Frankfurt", "Muenchen", "Friedrichshafen"};
 
+#endif

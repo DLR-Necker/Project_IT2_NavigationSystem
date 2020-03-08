@@ -1,12 +1,13 @@
-#pragma once
+#ifndef _NODE_
+#define _NODE_
+
 #include "Network.h"
 #include <vector>
-using namespace::std;
 
 class Node
 {
 private:
-	int index;
+	unsigned int index;
 	bool visited;
 	bool member_pq = false;							// becomes true when inserted into priority queue (pq)
 	unsigned int tentativeCost;
@@ -57,4 +58,4 @@ public:
 	// Less 
 	bool operator<(const Node& n);
 };
-
+#endif

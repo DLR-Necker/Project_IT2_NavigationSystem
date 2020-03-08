@@ -1,7 +1,10 @@
-#pragma once
+#ifndef _PATH_
+#define _PATH_
+
 #include <string>
 #include <vector>
 #include "City.h"
+using namespace::std;
 
 class Path
 {
@@ -31,11 +34,12 @@ public:
 	unsigned int getTotalCost();
 
 	/*
-	This method adds a city to the citysVisited vector
+	These methods add/delete a city to a path vector at the last position
 	@param	newCity					new city (pointer) to vector, that lies on path
 	@return void
 	*/
 
 	void add_CitytoPath(City* currentCity);
+	void delete_CityfromPath();
 };
-
+#endif

@@ -4,6 +4,9 @@
 // Default Constructor
 Calculator_EveryWay::Calculator_EveryWay() {}
 
+// Special Constructor
+Calculator_EveryWay::Calculator_EveryWay(Map* map):Way_Calculator(map) {}
+
 
 // Destructor
 Calculator_EveryWay::~Calculator_EveryWay() {}
@@ -14,75 +17,69 @@ Calculator_EveryWay::~Calculator_EveryWay() {}
 
 /*** Additional Methods ***/
 
-void Calculator_EveryWay::add_PathtoWaysFound(Path currentPath) {
-	Way_Calculator::waysFound.push_back(currentPath);
-}
-
-bool Calculator_EveryWay::neighbours(City* currentCity, City* endCity){
-
-	//Break Conditions: endCity is reached ; no unvisited neighbours
-	// Check, if either one condition is met: 
-
-	if (currentCity == endCity) {
-		//Store currentCity to Path
-		
-		// Store Path to waysFound
-		
-		return true; 
-	}
-
-	if (/*are neighbours of current city part of path?*/) {
-		return false;
-	}
-
-}
-
-vector<Path*> Calculator_EveryWay::findWay(City * start, City * end)
-{
-	return vector<Path*>();
-}
-
-
-
-
-
-
-
-/*
-
-{	
-	//Define map matrice to be used for calculation:
-	unsigned int currentDistance = Way_Calculator::network_distance[0][1];
-
-	// Retrieve matrice position of current city and end from network array:
-
-
-	// Create neighbour array based on network matrice:
-	// Define row of array depending on city: 
-	int city = ;								//number of city
+vector<int> Calculator_EveryWay::findNeighbours(int currentCityIndex) {
+	// Initialise neighbour vector:
+	vector<int> neighbours;
+	// Screen network for neighbours of current City
 	for (int i = 0; i = maxCitys; i++) {
-		
+		if (map->network[currentCityIndex][i] != 0) {
+			neighbours.push_back(i);
+		}
 	}
-
-
-	// 1st break condition of search: destination is reached 
-	if (currentCity == end) {
-		// Add currentCity to Path
-		add_CitytoPath(City* currentCity);
-		// Add path to possiblePaths
-		this->Calculator_EveryWay::add_PathtoPossiblePaths(Path currentPath);
-		//return possiblePaths
-		return Path();
-
-	} // 2nd break condition of search: no more unvisited neighbouring cities 
-	else if (...) {
-		
-	} // Search continues, because no break condition is met.
-	else {
-
-	}
-		return Path();
-
+	return neighbours;
 }
 
-*/
+int Calculator_EveryWay::totalPathCost(Path currentPath, int currentCityIndex, int neighbourCityIndex) {
+	unsigned int newPathcost = ( currentPath.getTotalCost() ) + ( map->network[currentCityIndex][neighbourCityIndex] );
+	return newPathcost;
+}
+
+Path* Calculator_EveryWay::findWay(City* start, City* end){
+
+	// Converts start (current) city into its respective network array index:
+	int currentCityIndex = cityToIndex(start);
+	int endCityIndex = cityToIndex(end);
+
+	//Get current Path:
+	Path currentPath = this->currentPath;
+
+	/* Find next city along the path -> Backtracking
+	   3 cases: 1. End is reached				--> successful path --> store to vector  waysFound --> back to previous city
+				2. Neighbour was visited	    --> go back to previous city on the path with unvisited neighbours
+				3. Unvisited neighbours found	--> go to next unvisited neighbour
+	*/
+	// 1. Is end reached?:
+	if (currentCityIndex == endCityIndex) {
+		currentPath.add_CitytoPath(start);			// Store current city to path								
+		this->waysFound.push_back(currentPath);		// Store path to waysFound									
+		return &(currentPath);						// Go back to previous city
+	}
+
+	// 2. Are there visited neighbours?
+	auto neighbours = findNeighbours(currentCityIndex);	// Call findNeighbours to create array of neighbouring city indices
+	
+	visitedCitys[maxCitys] = this->visitedCitys;
+
+	for (int j = 0; j < neighbours.size() ; j++) {
+		if (visitedCitys[neighbours[j]] == 1) {}		// Check if neighbour at index i was already visited. if yes, go ahead
+
+	 // 3. Unvisited neighbours
+		else {											// Call findWay again to move one step ahead.						
+			// Store current city to path
+			currentPath.add_CitytoPath(map->listCitys[currentCityIndex]);
+			// Update total cost of path (time or distance)
+			currentPath.setTotalCost(totalPathCost(currentPath, currentCityIndex, neighbours[j]));
+			// Set current Path attribute of Calculator_EveryWay
+			this->currentPath = currentPath;
+			//Set current city status to visited
+			this->visitedCitys[currentCityIndex] = 1;
+			// Go one step ahead by calling findWay with first unvisited neighbour
+			findWay(map->listCitys[neighbours[j]], end);
+		}
+	}
+	// Delete last city on path because it will be added in the next iteration.
+	currentPath.delete_CityfromPath();
+	this->visitedCitys[currentCityIndex] = 0;
+	return &(currentPath);
+}
+

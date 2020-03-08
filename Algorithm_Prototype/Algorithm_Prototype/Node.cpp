@@ -57,7 +57,7 @@ Node* Node::getPredecessor() {
 	return this->predecessor;
 }
 
-vector<Node*> Node::getNeighbours() {
+std::vector<Node*> Node::getNeighbours() {
 	return this->neighbours;
 }
 

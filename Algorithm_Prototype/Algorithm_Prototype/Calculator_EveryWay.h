@@ -1,19 +1,22 @@
-#pragma once
-#include "Way_Calculator.h"
-#include "Path.h"
-#include "Map.h"
-using namespace::std;
+#ifndef _CalcEW_
+#define _CalcEW_
 
+#include "Way_Calculator.h"
 
 class Calculator_EveryWay :
 	public Way_Calculator
 {
 protected:
-
+	bool visitedCitys[maxCitys];	// Array indices represent indices of each city in listcitys. True: City visited (1) ; False: City not visited (0)
+	Path currentPath;
+	//City* currentCity;
 
 public:
 	// Default Constructor
 	Calculator_EveryWay();
+
+	// Special Constructor
+	Calculator_EveryWay(Map* map);
 
 	// Default Deconstructor
 	~Calculator_EveryWay();
@@ -25,23 +28,33 @@ public:
 	/*** Additional Methods ***/
 
 	/*
-	This method adds a path to the possiblePaths vector.
-	@param	currentPath						Successful path that led to the destination city
-	@return void					
+	This method finds all neighbours of the current city on the current path
+	@param	currentCityIndex				City whose neighbours are to be found.
+	@return vector<int>						returns all indices of neighbour cities.
 	*/
 
-	void add_PathtoWaysFound(Path currentPath);
+	std::vector<int> findNeighbours(int currentCityIndex);
 
 	/*
-	This method finds all unvisited neighbours of the current city on the path 
-	@param	currentCity						The current city along the path whose unvisited neighbours are to be found
-	        endCity							Destination city (is always the same). Is obtained from Way_Calculator
-	@return bool							True, if an unvisited neighbour or endCity is found / False, if no unvisited neighbour is found
+	This method determines the total Cost of the current path
+	@param	currentPath						Path object whose total cost is to be updated.
+			currentCityIndex				Current city on the path
+			neighbourCityIndex				Index of unvisited neighbouring city which is next along the path.
+	@return vector<int>						returns all indices of neighbour cities.
 	*/
 
-	bool neighbours(City* currentCity, City* endCity);
+	int totalPathCost(Path currentPath, int currentCityIndex, int neighbourCityIndex);
 
-	virtual vector<Path*> findWay(City* start, City* end);
+	/*
+	This method returns a possible path between start and destination.
+	@param	start					start City
+			end						destination City
+	@return Path					Successful path between start and end
+	*/
+
+	virtual Path* findWay(City* start, City* end);
 
 };
+
+#endif 
 

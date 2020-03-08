@@ -5,7 +5,7 @@
 Path::Path() {}
 
 //Special Constructor
-Path::Path(vector<City*> citysOnPath, unsigned int totalCost) {
+Path::Path(std::vector<City*> citysOnPath, unsigned int totalCost) {
 	this->citysOnPath = citysOnPath;
 	this->totalCost = totalCost;
 }
@@ -19,7 +19,7 @@ Path::~Path() {
 						Methods
 -----------------------------------------------------------------------*/
 /*** Setter ***/
-void Path::set_citysOnPath(vector<City*> citysOnPath) {
+void Path::set_citysOnPath(std::vector<City*> citysOnPath) {
 	this->citysOnPath = citysOnPath;
 }
 void Path::setTotalCost(unsigned int totalCost) {
@@ -27,7 +27,7 @@ void Path::setTotalCost(unsigned int totalCost) {
 }
 
 /*** Getter ***/
-vector<City*> Path::get_citysOnPath() {
+std::vector<City*> Path::get_citysOnPath() {
 	return this->citysOnPath;
 }
 unsigned int Path::getTotalCost() {
@@ -35,5 +35,10 @@ unsigned int Path::getTotalCost() {
 }
 /*** Additional Methods ***/
 void Path::add_CitytoPath(City* currentCity) {
-	this->citysOnPath.push_back(currentCity);
+	this->citysOnPath.insert(citysOnPath.begin(), currentCity);				// generates vector from start to end point by inserting the current City* to the front. 
+																			// Dijkstra's algorithm uses predecessors to determine the path hence calculating from end to start.
+}
+
+void Path::delete_CityfromPath(){
+	this->citysOnPath.pop_back();
 }
