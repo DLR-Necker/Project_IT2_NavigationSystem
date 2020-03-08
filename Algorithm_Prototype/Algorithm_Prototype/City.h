@@ -8,8 +8,8 @@ using namespace::std;
 class City
 {
 private:
-	std::string name;
-	std::string country;
+	string name;
+	string country;
 	int population;
 
 public:
@@ -17,7 +17,7 @@ public:
 	City();
 
 	// Special Constructor
-	City(std::string name, std::string country, int population);
+	City(string name, string country, int population);
 
 	// Default Deconstructor
 	~City();
@@ -26,13 +26,13 @@ public:
 							Methods
 	-----------------------------------------------------------------------*/
 	/*** Setter ***/
-	void setName(std::string name);
-	void setCountry(std::string country);
+	void setName(string name);
+	void setCountry(string country);
 	void setPopulation(int population);
 
 	/*** Getter ***/
-	std::string getName();
-	std::string getCountry();
+	string getName();
+	string getCountry();
 	int getPopulation();
 };
 

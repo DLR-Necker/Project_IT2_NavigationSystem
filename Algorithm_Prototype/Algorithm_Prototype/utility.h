@@ -21,7 +21,7 @@ public:
 		unsigned int hrs = minutes / 60;			// holds the amount of hrs
 		unsigned int min = minutes - (hrs * 60);	// by substracting hrs*60 (min) the remaining amount of minutes is obtained
 
-		string hrsRepresentation = (char)hrs + ":" + (char)min;
+		string hrsRepresentation = hrs + ":" + min;
 
 		return hrsRepresentation;
 	}

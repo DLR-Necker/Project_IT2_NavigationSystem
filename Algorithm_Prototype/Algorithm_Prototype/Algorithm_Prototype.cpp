@@ -26,13 +26,11 @@ int main()
 														  {0, 0, 7, 0, 6, 0, 3},	//M
 														  {0, 0, 9, 0, 4, 3, 0} };	//F
 	// Generating Map object
-	cout << "Generating Map objects..." << endl;
 	Map map_time = Map();
 	Map map_dist = Map();
 
 	// Generating City* List for testing purpose
 	for (int i = 0; i < maxCitys; i++) {
-		cout << "Generating list of Cities..." << endl;
 		City* c = new City();			// pointer on new City object
 		c->setName(citys[i]);			// setting name of new City object
 		map_time.listCitys[i] = c;
@@ -42,18 +40,17 @@ int main()
 	// Initializing network variable of map
 	for (int i = 0; i < maxCitys; i++) {
 		for (int j = 0; j < maxCitys; j++) {
-			cout << "Creating network for maps..." << endl;
 			map_time.network[i][j] = network_time[i][j];
 			map_dist.network[i][j] = network_distance[i][j];
 		}
 	}
 
-	cout << "Declaring map types..." << endl;
+	// Declaring Map types
 	map_dist.mapType = Map::type::distance;
 	map_time.mapType = Map::type::time;
 
-	map_dist.searchBestWay(map_dist.listCitys[0], map_dist.listCitys[4]);
-	
+	//map_dist.searchBestWay(map_dist.listCitys[0], map_dist.listCitys[4]);
+	map_time.searchBestWay(map_dist.listCitys[0], map_dist.listCitys[5]);
 
 }
 

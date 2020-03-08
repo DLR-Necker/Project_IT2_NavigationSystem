@@ -34,7 +34,7 @@ int Calculator_EveryWay::totalPathCost(Path currentPath, int currentCityIndex, i
 	return newPathcost;
 }
 
-Path* Calculator_EveryWay::findWay(City* start, City* end){
+void Calculator_EveryWay::findWay(City* start, City* end){
 
 	// Converts start (current) city into its respective network array index:
 	int currentCityIndex = cityToIndex(start);
@@ -51,8 +51,9 @@ Path* Calculator_EveryWay::findWay(City* start, City* end){
 	// 1. Is end reached?:
 	if (currentCityIndex == endCityIndex) {
 		currentPath.add_CitytoPath(start);			// Store current city to path								
-		this->waysFound.push_back(currentPath);		// Store path to waysFound									
-		return &(currentPath);						// Go back to previous city
+		this->waysFound.push_back(currentPath);		// Store path to waysFound	
+		print_waysFound();
+		return;
 	}
 
 	// 2. Are there visited neighbours?
@@ -80,6 +81,5 @@ Path* Calculator_EveryWay::findWay(City* start, City* end){
 	// Delete last city on path because it will be added in the next iteration.
 	currentPath.delete_CityfromPath();
 	this->visitedCitys[currentCityIndex] = 0;
-	return &(currentPath);
 }
 

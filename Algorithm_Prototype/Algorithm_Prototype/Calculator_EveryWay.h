@@ -33,7 +33,7 @@ public:
 	@return vector<int>						returns all indices of neighbour cities.
 	*/
 
-	std::vector<int> findNeighbours(int currentCityIndex);
+	vector<int> findNeighbours(int currentCityIndex);
 
 	/*
 	This method determines the total Cost of the current path
@@ -52,7 +52,7 @@ public:
 	@return Path					Successful path between start and end
 	*/
 
-	virtual Path* findWay(City* start, City* end);
+	virtual void findWay(City* start, City* end);
 
 };
 

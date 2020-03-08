@@ -27,33 +27,33 @@ int Way_Calculator::cityToIndex(City* city) {
 	return i;
 }
 
-Path* Way_Calculator::findWay(City * start, City * end)
+void Way_Calculator::findWay(City * start, City * end)
 {
 	cout << "Fehlende Methode in der Subklasse!" << endl;
-	Path* p = new Path();
-	return p;
 }
 
 void Way_Calculator::print_waysFound() {
-
+	cout << "Printing result..." << endl;
 	for (unsigned int i = 0; i < waysFound.size(); i++) {
-
-		for (unsigned int j = 0; j < waysFound[i].get_citysOnPath().size(); j++) {
-			if (i = waysFound.size()) {											// last city on path is reached
-				cout << waysFound[i].get_citysOnPath()[j]->getName() << ": ";
+		Path* p = &waysFound[i];
+		for (unsigned int j = 0; j < p->get_citysOnPath().size(); j++) {
+			if ( j == ((p->get_citysOnPath().size())-1) ) {											// last city on path is reached
+				cout << p->get_citysOnPath()[j]->getName() << ": ";
 			}
-
-			cout << ", ";
+			else {
+				cout << p->get_citysOnPath()[j]->getName();
+				cout << ", ";
+			}
 		}
 
 		
 
 		if ( (int) map->mapType == 1) {		// 1: mapType == distance
-			cout << waysFound[i].getTotalCost() << " km" << endl;
+			cout << p->getTotalCost() << " km" << endl;
 		}
 		else if ((int)map->mapType == 2) {	// 2: mapType == time
 
-			cout << utility().convert_minutesToHours(waysFound[i].getTotalCost()) << " hrs" << endl;
+			cout << utility().convert_minutesToHours(p->getTotalCost()) << " hrs" << endl;
 		}
 		else {	
 			cout << " (no map Type found)";

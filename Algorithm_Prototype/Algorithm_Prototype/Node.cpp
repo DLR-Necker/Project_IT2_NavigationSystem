@@ -4,13 +4,15 @@
 
 
 // Default Constructor
-Node::Node() {
-	//cout << "Erstelle einen Node" << endl;
-}
+Node::Node() {}
 
 // Special Constructor 
 Node::Node(int index, bool visited, unsigned int tentativeCost, Node* predecessor){}
 
+// Special Destructor
+Node::~Node() {
+	delete predecessor;
+}
 
 /*--------------------------------------------------------------
 							Methods

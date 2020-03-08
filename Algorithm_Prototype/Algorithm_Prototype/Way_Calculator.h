@@ -58,7 +58,7 @@ public:
 		@return Path*					pointer on generated Path object representing the result 
 	*/
 
-	virtual Path* findWay(City* start, City* end);
+	virtual void findWay(City* start, City* end);
 	
 };
 #endif

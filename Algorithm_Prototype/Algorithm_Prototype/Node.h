@@ -8,8 +8,8 @@ class Node
 {
 private:
 	unsigned int index;
-	bool visited;
-	bool member_pq;							// becomes true when inserted into priority queue (pq)
+	bool visited;							// becomes true when retrieved from priority queue (pq)
+	bool member_pq;							// becomes true when inserted into pq
 	unsigned int tentativeCost;
 	Node* predecessor;
 	vector<Node*> neighbours;
@@ -20,6 +20,9 @@ public:
 
 	// Special Constructor 
 	Node(int index, bool visited, unsigned int tentativeCost, Node* predecessor);
+
+	// Special Destructor
+	~Node();
 
 	/*--------------------------------------------------------------
 							Methods

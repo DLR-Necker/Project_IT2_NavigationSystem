@@ -42,7 +42,7 @@ public:
 				end						end City
 		@return bestWay					vector of best ways found
 	*/
-	Path* findWay(City* start, City* end);
+	void findWay(City* start, City* end);
 
 	/*
 		This method initialize the Dijkstra algorithm

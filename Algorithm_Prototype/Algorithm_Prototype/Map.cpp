@@ -12,7 +12,9 @@ Map::Map() {}
 // Special Constructor
 
 // Default Deconstructor
-Map::~Map() {}
+Map::~Map() {
+	delete listCitys[maxCitys];
+}
 
 /*----------------------------------------------------------------------
 							Methods
