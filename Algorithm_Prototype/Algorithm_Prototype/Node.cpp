@@ -78,12 +78,17 @@ void Node::update_tentativeCost(unsigned int tentativeCost) {
 						Operators
 ----------------------------------------------------------------*/
 // Allocation
-void Node::operator=(const Node& n) {
-	index = n.index;
-	visited = n.visited;
-	tentativeCost = n.tentativeCost;
-	predecessor = n.predecessor;
+Node& Node::operator=(const Node& n) {
+	if (this != &n) {
+		index = n.index;
+		visited = n.visited;
+		tentativeCost = n.tentativeCost;
+		predecessor = new Node();						// deep copy
+		predecessor = n.predecessor;
+	}
+	return *this;
 }
+
 // Equality
 bool Node::operator==(const Node& n) {
 	if (tentativeCost == n.tentativeCost) {

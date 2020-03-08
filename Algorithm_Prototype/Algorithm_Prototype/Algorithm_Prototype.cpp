@@ -1,13 +1,12 @@
 #include "pch.h"
 #include <iostream>
 #include "Map.h"
-
-
-
+#include "Node.h"
+#include <queue>
 
 int main()
 {
-	
+
 	// adjacent matrix representing travel times	// K  B  R  S  F  M  F
 	unsigned int network_time[maxCitys][maxCitys] = { {0, 2, 0, 0, 2, 0, 0},	//K
 													  {2, 0, 1, 0, 3, 0, 0},	//B
@@ -51,7 +50,5 @@ int main()
 
 	//map_dist.searchBestWay(map_dist.listCitys[0], map_dist.listCitys[4]);
 	map_time.searchBestWay(map_dist.listCitys[0], map_dist.listCitys[5]);
-
 }
-
 

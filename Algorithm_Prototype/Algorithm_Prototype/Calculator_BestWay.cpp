@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Calculator_BestWay.h"
 
-
-
 // Default Constructor
 Calculator_BestWay::Calculator_BestWay(){}
 

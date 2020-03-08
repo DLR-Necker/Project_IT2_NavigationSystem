@@ -45,6 +45,9 @@
     <ClInclude Include="Map.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Comparator_greater.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

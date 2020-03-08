@@ -7,6 +7,7 @@
 #include <iostream>
 #include "Way_Calculator.h"
 #include "Node.h"
+#include "Comparator_greater.h"
 using namespace::std;
 
 
@@ -14,7 +15,7 @@ class Calculator_BestWay :
 	public Way_Calculator
 {
 protected:
-	priority_queue<Node*, vector<Node*>, less<Node*> > pq;								// Priority Queue needed for Dijekstra algorithm
+	priority_queue<Node*, vector<Node*>, Comparator_greater > pq;							// Priority Queue needed for Dijekstra algorithm
 	Node* nodes[maxCitys];										// Collector of all knots with their corresponding data
 
 

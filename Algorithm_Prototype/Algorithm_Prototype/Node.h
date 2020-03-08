@@ -56,7 +56,7 @@ public:
 							Operators
 	----------------------------------------------------------------*/
 	// Allocation
-	void operator=(const Node& n);
+	Node& operator=(const Node& n);
 
 	// Equality
 	bool operator==(const Node& n);
@@ -67,4 +67,5 @@ public:
 	// Less 
 	bool operator<(const Node& n);
 };
+
 #endif
