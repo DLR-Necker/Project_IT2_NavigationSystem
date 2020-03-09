@@ -31,6 +31,7 @@ void Map::searchEveryWay(City* start, City* end) {
 	cout << "**** Searching for every way... *****" << endl;
 	Calculator_EveryWay* ce = new Calculator_EveryWay(this);
 	ce -> findWay(start, end);
+	ce->totalPathCost();
 	ce->print_waysFound();
 }
 

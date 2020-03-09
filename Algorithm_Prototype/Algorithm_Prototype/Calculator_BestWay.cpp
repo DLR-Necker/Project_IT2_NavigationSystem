@@ -132,7 +132,7 @@ void Calculator_BestWay::generatePath(int iter) {
 	result.setTotalCost(nodes[end_index]->get_tentativeCost());												// set its total cost to the value stored in end node -> does not change for different cheapest ways
 	//cout << "Gesamtkosten: " << result.getTotalCost() << endl;
 
-	result.add_CitytoPath(map->listCitys[iter]);															// adding City on position iter to result citysOnPath variable
+	result.add_CitytoPath_BW(map->listCitys[iter]);															// adding City on position iter to result citysOnPath variable
 	currentPath = result;
 
 	if (iter == start_index) {
@@ -140,7 +140,7 @@ void Calculator_BestWay::generatePath(int iter) {
 		return;
 	}
 
-	for (int i = 0; i < nodes[iter]->getPredecessor().size(); i++) {										// checking how many predecessors of the same cost are present
+	for (unsigned int i = 0; i < nodes[iter]->getPredecessor().size(); i++) {								// checking how many predecessors of the same cost are present
 		Node* predecessor = nodes[iter]->getPredecessor()[i];
 
 		iter = predecessor->getIndex();																		// updating the iterator iter to the index of one predecessor of current

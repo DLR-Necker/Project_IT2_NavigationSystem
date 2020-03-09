@@ -17,7 +17,6 @@ protected:
 	Path currentPath;
 	vector<Path> waysFound;		
 	Map* map;
-	Path currentPath;
 
 	/*----------------------------------------------------------------------
 								Methods

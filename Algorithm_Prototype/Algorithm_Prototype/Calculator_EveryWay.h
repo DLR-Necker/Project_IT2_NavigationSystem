@@ -44,7 +44,7 @@ public:
 	@return vector<int>						returns all indices of neighbour cities.
 	*/
 
-	int totalPathCost(Path currentPath, int currentCityIndex, int neighbourCityIndex);
+	void totalPathCost();
 
 	/*
 	This method returns a possible path between start and destination.

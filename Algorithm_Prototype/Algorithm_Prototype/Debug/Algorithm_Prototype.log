@@ -1,2 +1,21 @@
-﻿  Algorithm_Prototype.cpp
-  Algorithm_Prototype.vcxproj -> M:\Info\00IT_2_NAV\Algorithm_Prototype\Debug\Algorithm_Prototype.exe
+﻿  pch.cpp
+  Algorithm_Prototype.cpp
+  Calculator_BestWay.cpp
+m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\way_calculator.h(20): error C2086: "Path Way_Calculator::currentPath": Neudefinition
+  m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\way_calculator.h(17): note: Siehe Deklaration von "Way_Calculator::currentPath"
+m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\calculator_bestway.cpp(143): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+  Calculator_EveryWay.cpp
+m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\way_calculator.h(20): error C2086: "Path Way_Calculator::currentPath": Neudefinition
+  m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\way_calculator.h(17): note: Siehe Deklaration von "Way_Calculator::currentPath"
+m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\calculator_everyway.cpp(30): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\calculator_everyway.cpp(35): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+  City.cpp
+  Map.cpp
+m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\way_calculator.h(20): error C2086: "Path Way_Calculator::currentPath": Neudefinition
+  m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\way_calculator.h(17): note: Siehe Deklaration von "Way_Calculator::currentPath"
+  Node.cpp
+  Path.cpp
+  Way_Calculator.cpp
+m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\way_calculator.h(20): error C2086: "Path Way_Calculator::currentPath": Neudefinition
+  m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\way_calculator.h(17): note: Siehe Deklaration von "Way_Calculator::currentPath"
+  Code wird generiert...

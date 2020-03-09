@@ -26,11 +26,23 @@ vector<int> Calculator_EveryWay::findNeighbours(int currentCityIndex) {
 	return neighbours;
 }
 
-int Calculator_EveryWay::totalPathCost(Path currentPath, int currentCityIndex, int neighbourCityIndex) {
-	unsigned int newPathcost = ( currentPath.getTotalCost() ) + ( map->network[currentCityIndex][neighbourCityIndex] );
-	return newPathcost;
-}
+void Calculator_EveryWay::totalPathCost() {
+	for (unsigned int i = 0; i < waysFound.size(); i++) {								// outer iterator on vector waysFound
+		unsigned int tentCost = 0;
+		int this_index = 0;
+		int next_index = 0;
 
+		for (unsigned int j = 0; j < waysFound[i].get_citysOnPath().size(); j++) {		// inner iterator on vector citysOnPath
+			vector<City*> currentP = waysFound[i].get_citysOnPath();
+			this_index = cityToIndex(currentP[j]);
+			next_index = cityToIndex(currentP[j+1]);
+			tentCost += map->network[this_index][next_index];
+		}
+
+		waysFound[i].setTotalCost(tentCost);
+	}
+
+}
 void Calculator_EveryWay::findWay(City* start, City* end){
 
 	// Converts start (current) city into its respective network array index:
@@ -64,7 +76,6 @@ void Calculator_EveryWay::findWay(City* start, City* end){
 	for (unsigned int j = 0; j < neighbours.size() ; j++) {											
 		if (visitedCitys[neighbours[j]] != 1) {																// Go ahead, if current neighbour is unvisited 
 			currentPath.add_CitytoPath_EW(map->listCitys[currentCityIndex]);								// Store current city to path
-			currentPath.setTotalCost(totalPathCost(currentPath, currentCityIndex, neighbours[j]));			// Update total cost of path (time or distance)
 			this->currentPath = currentPath;																// Set current Path attribute of Calculator_EveryWay
 			visitedCitys[currentCityIndex] = 1;																//Set current city status to visited	
 

@@ -49,6 +49,7 @@ int main()
 	map_time.mapType = Map::type::time;
 
 	//map_dist.searchBestWay(map_dist.listCitys[0], map_dist.listCitys[4]);
-	map_time.searchBestWay(map_dist.listCitys[0], map_dist.listCitys[5]);		
+	map_time.searchBestWay(map_dist.listCitys[0], map_dist.listCitys[5]);	
+	map_time.searchEveryWay(map_dist.listCitys[0], map_dist.listCitys[5]);
 }
 
