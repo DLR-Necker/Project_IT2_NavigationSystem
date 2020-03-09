@@ -9,9 +9,10 @@ using namespace::std;
 0: Köln
 1: Berlin
 2: Rostock
-3: Frankfurt
-4: München
-5: Friedrichshafen
+3: Schwerin
+4: Frankfurt
+5: München
+6: Friedrichshafen
 */
 
 const int maxCitys = 7;

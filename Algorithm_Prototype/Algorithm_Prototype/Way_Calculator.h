@@ -38,12 +38,6 @@ public:
 	// Default Deconstructor
 	~Way_Calculator();
 
-	/*
-		This method prints the given path vector containing pointers to city objects to the console.
-		@param	waysFound		vector with result paths
-		@return void
-	*/
-	void print_waysFound();
 
 	/*----------------------------------------------------------------------
 							(Virtual)	Methods

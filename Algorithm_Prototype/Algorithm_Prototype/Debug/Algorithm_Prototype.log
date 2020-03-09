@@ -1,5 +1,7 @@
-﻿  Algorithm_Prototype.cpp
-  Calculator_BestWay.cpp
+﻿  Calculator_BestWay.cpp
+  Calculator_EveryWay.cpp
+m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\calculator_everyway.cpp(63): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
   Map.cpp
+  Way_Calculator.cpp
   Code wird generiert...
-  Algorithm_Prototype.vcxproj -> C:\Users\Marcel\Documents\Studium\Projektarbeiten\IT_Projekt\Project_IT2_NavigationSystem\Algorithm_Prototype\Debug\Algorithm_Prototype.exe
+  Algorithm_Prototype.vcxproj -> M:\Projektarbeiten\NavSys\Algorithm_Prototype\Debug\Algorithm_Prototype.exe

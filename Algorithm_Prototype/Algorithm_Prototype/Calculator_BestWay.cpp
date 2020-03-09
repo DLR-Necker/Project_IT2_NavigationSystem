@@ -27,7 +27,7 @@ void Calculator_BestWay::findWay(City * start, City * end)
 	pq.push(currentNode);
 
 	/*** Start of Dijkstra ***/
-	cout << "Beginne mit Dijkstra" << endl;
+	//cout << "Beginne mit Dijkstra" << endl;
 
 	while ( currentNode->getIndex() != this->end_index ) {						// if current node is set to end point, its shortest distance from start is known
 		currentNode = pq.top();													// updates current node to "cheapest" element in pq 
@@ -54,7 +54,7 @@ void Calculator_BestWay::findWay(City * start, City * end)
 		}
 	}
 
-	cout << "Pfad gefunden" << endl;
+	//cout << "Pfad gefunden" << endl;
 	
 	/*** Creating a Path object from the Results stored in the nodes array and printing it to the console
 	 nodes[] now contains nodes with all relevant information needed: tentative costs, predecessor 
@@ -69,7 +69,7 @@ void  Calculator_BestWay::initialize(City* start, City* end) {
 	this->end_index = cityToIndex(end);
 
 	// Initialize knots before algorithm starts; set tentative cost of all knots except start to max unsigned int value (4,294,967,295) 
-	cout << "Initializiere Dijekstra..." << endl;
+	//cout << "Initializiere Dijekstra..." << endl;
 	for (int i = 0; i < maxCitys; i++) {
 		Node* node = new Node();
 
@@ -119,21 +119,21 @@ void Calculator_BestWay::generatePath(Node* nodes[]) {
 	Path result = Path();																					// Generate Path object 
 
 	result.setTotalCost(nodes[end_index]->get_tentativeCost());												// set its total cost to the value stored in end node
-	cout << "Gesamtkosten: " << result.getTotalCost() << endl;
+	//cout << "Gesamtkosten: " << result.getTotalCost() << endl;
 
 	int iter = end_index;																					// create iterator and set it to end_index
 
 	while (nodes[iter]->getPredecessor() != NULL) {															// Iteration over nodes[] array; NULL: start node found (no predecessor)
 		Node* current = nodes[iter];
 		Node* predecessor = nodes[iter]->getPredecessor();
-		cout << "Fuege Node hinzu: " << map->listCitys[current->getIndex()]->getName() << endl;
+		//cout << "Fuege Node hinzu: " << map->listCitys[current->getIndex()]->getName() << endl;
 		result.add_CitytoPath(map->listCitys[current->getIndex()]);											// uses index of current node to retrieve pointer to city from listCitys 
 		iter = predecessor->getIndex();
-		cout << "Vorgaenger Node: " << predecessor->getIndex() << endl;
+		//cout << "Vorgaenger Node: " << predecessor->getIndex() << endl;
 	}
 
 	result.add_CitytoPath(map->listCitys[nodes[start_index]->getIndex()]);
-	cout << "Fuege Start node hinzu: " << map->listCitys[nodes[start_index]->getIndex()]->getName() << endl;
+	//cout << "Fuege Start node hinzu: " << map->listCitys[nodes[start_index]->getIndex()]->getName() << endl;
 																			
 	waysFound.push_back(result);																			// add result path to vector waysFound
 }
