@@ -34,9 +34,13 @@ unsigned int Path::getTotalCost() {
 	return this->totalCost;
 }
 /*** Additional Methods ***/
-void Path::add_CitytoPath(City* currentCity) {
+void Path::add_CitytoPath_BW(City* currentCity) {
 	this->citysOnPath.insert(citysOnPath.begin(), currentCity);				// generates vector from start to end point by inserting the current City* to the front. 
 																			// Dijkstra's algorithm uses predecessors to determine the path hence calculating from end to start.
+}
+
+void Path::add_CitytoPath_EW(City* currentCity) {
+	this->citysOnPath.push_back(currentCity);
 }
 
 void Path::delete_CityfromPath(){

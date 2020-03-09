@@ -127,12 +127,12 @@ void Calculator_BestWay::generatePath(Node* nodes[]) {
 		Node* current = nodes[iter];
 		Node* predecessor = nodes[iter]->getPredecessor();
 		cout << "Fuege Node hinzu: " << map->listCitys[current->getIndex()]->getName() << endl;
-		result.add_CitytoPath(map->listCitys[current->getIndex()]);											// uses index of current node to retrieve pointer to city from listCitys 
+		result.add_CitytoPath_BW(map->listCitys[current->getIndex()]);											// uses index of current node to retrieve pointer to city from listCitys 
 		iter = predecessor->getIndex();
 		cout << "Vorgaenger Node: " << predecessor->getIndex() << endl;
 	}
 
-	result.add_CitytoPath(map->listCitys[nodes[start_index]->getIndex()]);
+	result.add_CitytoPath_BW(map->listCitys[nodes[start_index]->getIndex()]);
 	cout << "Fuege Start node hinzu: " << map->listCitys[nodes[start_index]->getIndex()]->getName() << endl;
 																			
 	waysFound.push_back(result);																			// add result path to vector waysFound

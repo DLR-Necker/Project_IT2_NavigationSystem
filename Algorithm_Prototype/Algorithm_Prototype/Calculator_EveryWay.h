@@ -2,14 +2,15 @@
 #define _CalcEW_
 
 #include "Way_Calculator.h"
+#include <iostream>
+using namespace::std;
 
 class Calculator_EveryWay :
 	public Way_Calculator
 {
 protected:
-	bool visitedCitys[maxCitys];	// Array indices represent indices of each city in listcitys. True: City visited (1) ; False: City not visited (0)
-	Path currentPath;
-	//City* currentCity;
+	bool visitedCitys[maxCitys];								// Array indices represent indices of each city in listcitys. True: City visited (1) ; False: City not visited (0)
+	
 
 public:
 	// Default Constructor

@@ -14,6 +14,7 @@ class Way_Calculator
 protected:
 	int start_index;
 	int end_index;
+	Path currentPath;
 	vector<Path> waysFound;		
 	Map* map;
 
@@ -38,12 +39,6 @@ public:
 	// Default Deconstructor
 	~Way_Calculator();
 
-	/*
-		This method prints the given path vector containing pointers to city objects to the console.
-		@param	waysFound		vector with result paths
-		@return void
-	*/
-	void print_waysFound();
 
 	/*----------------------------------------------------------------------
 							(Virtual)	Methods
