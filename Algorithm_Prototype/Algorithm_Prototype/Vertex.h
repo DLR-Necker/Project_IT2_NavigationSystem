@@ -12,12 +12,12 @@ private:
 	unsigned int totalCost;				// holding total cost to reach this vertix from start vertix
 	vector<neighbour> neighbours;		// muss für einen Vector der Zuweisungsoperator angepasst werden; wird dieser als pointer behandelt?
 	bool visited;
-				    
+
 
 public:
 	// Default Constructor
 	Vertex();
-	
+
 	// Special Constructor
 	Vertex(unsigned int totalCost, string name);
 
@@ -33,8 +33,18 @@ public:
 	// Allocator
 	Vertex operator=(const Vertex &V);
 
+	/*
+	The following overloading of comparing operators is neded for the operation with priority queues for the Dijkstra algorithm.
+	The key value for the insertion of a Vertex into the priority queue is its tentative totalCost
+	*/
 	// Equality
-	bool operator==(const Vertex &v)
+	bool operator==(const Vertex &v);
+
+	// Greater 
+	bool operator>(const Vertex &v);
+
+	// Less
+	bool operator<(const Vertex& v);
 
 	/*----------------------------------------------------------------------
 							Methods
