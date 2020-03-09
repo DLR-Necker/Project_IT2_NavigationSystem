@@ -32,10 +32,11 @@ void Calculator_EveryWay::totalPathCost() {
 		int this_index = 0;
 		int next_index = 0;
 
-		for (unsigned int j = 0; j < waysFound[i].get_citysOnPath().size(); j++) {		// inner iterator on vector citysOnPath
+		for (unsigned int j = 0; j < waysFound[i].get_citysOnPath().size()-1; j++) {	// inner iterator on vector citysOnPath
 			vector<City*> currentP = waysFound[i].get_citysOnPath();
+			unsigned int a = j + 1;
 			this_index = cityToIndex(currentP[j]);
-			next_index = cityToIndex(currentP[j+1]);
+			next_index = cityToIndex(currentP[a]);
 			tentCost += map->network[this_index][next_index];
 		}
 

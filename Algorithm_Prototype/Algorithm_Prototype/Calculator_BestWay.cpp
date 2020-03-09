@@ -27,7 +27,6 @@ void Calculator_BestWay::findWay(City * start, City * end)
 	pq.push(currentNode);
 
 	/*** Start of Dijkstra ***/
-	//cout << "Beginne mit Dijkstra" << endl;
 
 	while ( currentNode->getIndex() != this->end_index ) {						// if current node is set to end point, its shortest distance from start is known
 		currentNode = pq.top();													// updates current node to "cheapest" element in pq 
@@ -55,8 +54,6 @@ void Calculator_BestWay::findWay(City * start, City * end)
 		}
 	}
 
-	cout << "Pfad gefunden" << endl;
-	
 	/*** Creating a Path object from the Results stored in the nodes array and printing it to the console
 	 nodes[] now contains nodes with all relevant information needed: tentative costs, predecessor 
 	*/
@@ -123,14 +120,11 @@ void Calculator_BestWay::update_NodeCost(Node* currentNode, Node* neighbour) {
 }
 
 void Calculator_BestWay::generatePath(int iter) {
-	cout << "Generiere nun den Pfad " << endl;
 	Path result = currentPath;																				// Generate Path object
 	Path current = currentPath;
 	int startIter = iter;
-	//Node* current = nodes[iter];
 
 	result.setTotalCost(nodes[end_index]->get_tentativeCost());												// set its total cost to the value stored in end node -> does not change for different cheapest ways
-	//cout << "Gesamtkosten: " << result.getTotalCost() << endl;
 
 	result.add_CitytoPath_BW(map->listCitys[iter]);															// adding City on position iter to result citysOnPath variable
 	currentPath = result;
