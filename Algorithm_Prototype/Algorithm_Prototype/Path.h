@@ -23,7 +23,7 @@ public:
 	~Path();
 
 	/*----------------------------------------------------------------------
-							Methods
+							(Virtual) Methods
 	-----------------------------------------------------------------------*/
 	/*** Setter ***/
 	void set_citysOnPath(vector<City*> citysOnPath);
@@ -39,7 +39,8 @@ public:
 	@return void
 	*/
 
-	void add_CitytoPath(City* currentCity);
+	void add_CitytoPath_BW(City* currentCity);		// Used by Calculator_BestWay
+	void add_CitytoPath_EW(City* currentCity);		// Used by Calculator_EveryWay
 	void delete_CityfromPath();
 };
 #endif

@@ -14,6 +14,7 @@ class Way_Calculator
 protected:
 	int start_index;
 	int end_index;
+	Path currentPath;
 	vector<Path> waysFound;		
 	Map* map;
 	Path currentPath;

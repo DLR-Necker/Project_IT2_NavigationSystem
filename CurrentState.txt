@@ -1,0 +1,8 @@
+Current State: 
+
+-> Algorithm works -> finds all ways
+
+To be debugged:
+-> print waysFound (may be written for each calculator separately)
+-> resetting of path
+

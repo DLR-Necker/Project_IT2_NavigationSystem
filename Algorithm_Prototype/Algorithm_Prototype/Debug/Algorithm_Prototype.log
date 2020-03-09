@@ -1,3 +1,2 @@
-﻿  Calculator_BestWay.cpp
-m:\projektarbeiten\navsys\algorithm_prototype\algorithm_prototype\calculator_bestway.cpp(143): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-  Algorithm_Prototype.vcxproj -> M:\Projektarbeiten\NavSys\Algorithm_Prototype\Debug\Algorithm_Prototype.exe
+﻿  Algorithm_Prototype.cpp
+  Algorithm_Prototype.vcxproj -> M:\Info\00IT_2_NAV\Algorithm_Prototype\Debug\Algorithm_Prototype.exe
