@@ -52,7 +52,7 @@ void Calculator_EveryWay::findWay(City* start, City* end){
 	if (currentCityIndex == endCityIndex) {
 		currentPath.add_CitytoPath(start);			// Store current city to path								
 		this->waysFound.push_back(currentPath);		// Store path to waysFound	
-		print_waysFound();
+		//print_waysFound();						// to be displaced
 		return;
 	}
 
