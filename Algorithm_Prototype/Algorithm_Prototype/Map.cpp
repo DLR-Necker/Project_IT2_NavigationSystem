@@ -24,11 +24,13 @@ void Map::searchBestWay(City* start, City* end) {
 	cout << "**** Searching for shortest and fastest way... *****" << endl;
 	Calculator_BestWay* cb = new Calculator_BestWay(this);
 	cb->findWay(start, end);
+	cb->print_waysFound();
 }
 
 void Map::searchEveryWay(City* start, City* end) {
 	cout << "**** Searching for every way... *****" << endl;
 	Calculator_EveryWay* ce = new Calculator_EveryWay(this);
 	ce -> findWay(start, end);
+	ce->print_waysFound();
 }
 

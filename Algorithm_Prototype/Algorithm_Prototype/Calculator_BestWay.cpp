@@ -61,7 +61,6 @@ void Calculator_BestWay::findWay(City * start, City * end)
 	*/
 	generatePath(nodes);
 	
-	print_waysFound();
 }
 
 void  Calculator_BestWay::initialize(City* start, City* end) {
@@ -74,7 +73,7 @@ void  Calculator_BestWay::initialize(City* start, City* end) {
 	for (int i = 0; i < maxCitys; i++) {
 		Node* node = new Node();
 
-		if (i == this->start_index) {
+		if (i == start_index) {
 			//cout << "Start gefunden" << endl;
 			node->set_tentativeCost(0);	
 		}
@@ -92,7 +91,7 @@ void  Calculator_BestWay::initialize(City* start, City* end) {
 
 void Calculator_BestWay::get_unvisitedNeighbours(Node* currentNode) {
 	for (int i = 0; i < maxCitys; i++) {
-			if ((this->map->network[currentNode->getIndex()][i] > 0) && !(nodes[i]->getVisited())) {											// checks network row if entry is greater than 0 -> neighbour of current node and if neighbour has already been visited 		
+			if ((map->network[currentNode->getIndex()][i] > 0) && !(nodes[i]->getVisited())) {											// checks network row if entry is greater than 0 -> neighbour of current node and if neighbour has already been visited 		
 				currentNode->setNeighbour(nodes[i]);
 				nodes[i]->setMemberPQ(true);
 			}

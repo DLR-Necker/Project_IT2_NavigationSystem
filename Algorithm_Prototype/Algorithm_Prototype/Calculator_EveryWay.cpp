@@ -22,7 +22,7 @@ vector<int> Calculator_EveryWay::findNeighbours(int currentCityIndex) {
 	vector<int> neighbours;
 	// Screen network for neighbours of current City
 	for (int i = 0; i = maxCitys; i++) {
-		if (map->network[currentCityIndex][i] != 0) {
+		if (map->network[currentCityIndex][i] > 0) {
 			neighbours.push_back(i);
 		}
 	}
@@ -52,7 +52,6 @@ void Calculator_EveryWay::findWay(City* start, City* end){
 	if (currentCityIndex == endCityIndex) {
 		currentPath.add_CitytoPath(start);			// Store current city to path								
 		this->waysFound.push_back(currentPath);		// Store path to waysFound	
-		print_waysFound();
 		return;
 	}
 
