@@ -11,10 +11,12 @@ private:
 	bool visited;							// becomes true when retrieved from priority queue (pq)
 	bool member_pq;							// becomes true when inserted into pq
 	unsigned int tentativeCost;
-	Node* predecessor;
 	vector<Node*> neighbours;
-
+	
 public:
+	// Attributes
+	vector<Node*> predecessor;
+
 	// Default Constructor
 	Node();
 
@@ -32,7 +34,7 @@ public:
 	void setVisited(bool visited);
 	void setMemberPQ(bool member_pq);
 	void set_tentativeCost(unsigned int tentativeCost);
-	void setPredecessor(Node* predecessor);
+	void setPredecessor(vector<Node*> predecessor);
 	void setNeighbour(Node* neighbour);
 	
 
@@ -41,7 +43,7 @@ public:
 	bool getVisited();
 	bool getMemberPQ();
 	unsigned int get_tentativeCost();
-	Node* getPredecessor();
+	vector<Node*> getPredecessor();
 	vector<Node*> getNeighbours();
 
 
@@ -50,7 +52,14 @@ public:
 	@param	tentativeCost		(UINT) value to be added
 	@return void
 	*/
-	void update_tentativeCost(unsigned int tentativeCost);
+	void update_tentativeCost(unsigned int tentativeCost, Node* predecessor);
+
+	/*
+	This method adds a predecessor to the predecessor vector of a Node Object
+	@param	predecessor		
+	@return void
+	*/
+	void addPredecessor(Node* predecessor);
 
 	/*--------------------------------------------------------------
 							Operators

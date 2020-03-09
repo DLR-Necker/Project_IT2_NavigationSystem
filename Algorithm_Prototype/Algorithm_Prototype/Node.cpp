@@ -11,7 +11,7 @@ Node::Node(int index, bool visited, unsigned int tentativeCost, Node* predecesso
 
 // Special Destructor
 Node::~Node() {
-	delete predecessor;
+	//delete predecessor;
 }
 
 /*--------------------------------------------------------------
@@ -35,7 +35,7 @@ void Node::set_tentativeCost(unsigned int tentativeCost) {
 	this->tentativeCost = tentativeCost;
 }
 
-void Node::setPredecessor(Node* predecessor) {
+void Node::setPredecessor(vector<Node*> predecessor) {
 	this->predecessor = predecessor;
 }
 
@@ -60,7 +60,7 @@ unsigned int Node::get_tentativeCost() {
 	return this->tentativeCost;
 }
 
-Node* Node::getPredecessor() {
+vector<Node*> Node::getPredecessor() {
 	return this->predecessor;
 }
 
@@ -69,10 +69,13 @@ vector<Node*> Node::getNeighbours() {
 }
 
 
-void Node::update_tentativeCost(unsigned int tentativeCost) {
-	this->tentativeCost = this->getPredecessor()->get_tentativeCost() + tentativeCost;
+void Node::update_tentativeCost(unsigned int tentativeCost, Node* predecessor) {
+	this->tentativeCost = predecessor->get_tentativeCost() + tentativeCost;			
 }
 
+void Node::addPredecessor(Node* predecessor) {
+	this->predecessor.push_back(predecessor);
+}
 
 /*--------------------------------------------------------------
 						Operators
@@ -83,7 +86,7 @@ Node& Node::operator=(const Node& n) {
 		index = n.index;
 		visited = n.visited;
 		tentativeCost = n.tentativeCost;
-		predecessor = new Node();						// deep copy
+		//predecessor = new Node();						// deep copy
 		predecessor = n.predecessor;
 	}
 	return *this;

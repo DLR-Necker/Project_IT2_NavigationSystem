@@ -23,7 +23,7 @@ void Calculator_BestWay::findWay(City * start, City * end)
 	/*** Initialization of Dijkstra ***/
 	initialize(start, end);
 
-	Node* currentNode = nodes[this->start_index];								// Initialization of start node
+	Node* currentNode = nodes[start_index];										// Initialization of start node
 	pq.push(currentNode);
 
 	/*** Start of Dijkstra ***/
@@ -47,6 +47,7 @@ void Calculator_BestWay::findWay(City * start, City * end)
 			if ((neighbour->getMemberPQ()) 
 				&& (check_ShorterDistance(currentNode, neighbour))) {						// retruns true if neighbour is element of pq && tentative cost for neighbour is less via current node 
 
+
 				update_NodeCost(currentNode, neighbour);
 				pq.push(neighbour);
 			}
@@ -54,12 +55,12 @@ void Calculator_BestWay::findWay(City * start, City * end)
 		}
 	}
 
-	//cout << "Pfad gefunden" << endl;
+	cout << "Pfad gefunden" << endl;
 	
 	/*** Creating a Path object from the Results stored in the nodes array and printing it to the console
 	 nodes[] now contains nodes with all relevant information needed: tentative costs, predecessor 
 	*/
-	generatePath(nodes);
+	generatePath(end_index);
 	
 }
 
@@ -69,22 +70,19 @@ void  Calculator_BestWay::initialize(City* start, City* end) {
 	this->end_index = cityToIndex(end);
 
 	// Initialize knots before algorithm starts; set tentative cost of all knots except start to max unsigned int value (4,294,967,295) 
-	//cout << "Initializiere Dijekstra..." << endl;
 	for (int i = 0; i < maxCitys; i++) {
 		Node* node = new Node();
 
 		if (i == start_index) {
-			//cout << "Start gefunden" << endl;
 			node->set_tentativeCost(0);	
 		}
 		else {
 			node->set_tentativeCost(-1);		// Max uint value
 		}
-		//cout << "Set index" << endl;
+		
 		node->setIndex(i);						// index needed to maintain assignment when used in priority queue
 		node->setVisited(false);
 		node->setMemberPQ(false);
-		node->setPredecessor(NULL);				// NULL: no predecesor at the moment; only set when shortest way found from start to current node via predecessor
 		nodes[i] = node;
 	}
 }
@@ -100,40 +98,55 @@ void Calculator_BestWay::get_unvisitedNeighbours(Node* currentNode) {
 
 	
 bool Calculator_BestWay::check_ShorterDistance(Node* currentNode, Node* neighbour) {
-	if ((neighbour->get_tentativeCost()) > (currentNode->get_tentativeCost())					// checks if tentative cost is less via current node
-															+ (map->network[currentNode->getIndex()][neighbour->getIndex()])) {
-			return true;
+	if ((neighbour->get_tentativeCost()) > (currentNode->get_tentativeCost())															// checks if tentative cost is less via current node
+											+ (map->network[currentNode->getIndex()][neighbour->getIndex()])) {							// and deletes current predecessor from the vector
+		if (!(neighbour->getPredecessor().empty()))	{																					// only delete if predecessor element is present
+			vector<Node*> p = neighbour->getPredecessor();
+			p.clear();
+			neighbour->setPredecessor(p);
+
+		}
+		return true;
 	}
+	else if ((neighbour->get_tentativeCost()) == (currentNode->get_tentativeCost())														// checks if tentative cost is equal via current node
+												+ (map->network[currentNode->getIndex()][neighbour->getIndex()])) {						// in this case, the current node is also pushed to predecessor vector
+		return true;
+	}															
 		else { return false; }
 }
 
 void Calculator_BestWay::update_NodeCost(Node* currentNode, Node* neighbour) {
-
-	neighbour->setPredecessor(currentNode);																							// update of predecessor must stand before set_tentativeCost!!
-	neighbour->update_tentativeCost(map->network[currentNode->getIndex()][neighbour->getIndex()]);									// update of tentative cost
+																								
+	neighbour->update_tentativeCost(this->map->network[currentNode->getIndex()][neighbour->getIndex()], currentNode );					// update of tentative cost
+	neighbour->addPredecessor(currentNode);
 	
 }
 
-void Calculator_BestWay::generatePath(Node* nodes[]) {
+void Calculator_BestWay::generatePath(int iter) {
 	cout << "Generiere nun den Pfad " << endl;
-	Path result = Path();																					// Generate Path object 
+	Path result = currentPath;																				// Generate Path object
+	Path current = currentPath;
+	int startIter = iter;
+	//Node* current = nodes[iter];
 
-	result.setTotalCost(nodes[end_index]->get_tentativeCost());												// set its total cost to the value stored in end node
+	result.setTotalCost(nodes[end_index]->get_tentativeCost());												// set its total cost to the value stored in end node -> does not change for different cheapest ways
 	//cout << "Gesamtkosten: " << result.getTotalCost() << endl;
 
-	int iter = end_index;																					// create iterator and set it to end_index
+	result.add_CitytoPath(map->listCitys[iter]);															// adding City on position iter to result citysOnPath variable
+	currentPath = result;
 
-	while (nodes[iter]->getPredecessor() != NULL) {															// Iteration over nodes[] array; NULL: start node found (no predecessor)
-		Node* current = nodes[iter];
-		Node* predecessor = nodes[iter]->getPredecessor();
-		//cout << "Fuege Node hinzu: " << map->listCitys[current->getIndex()]->getName() << endl;
-		result.add_CitytoPath(map->listCitys[current->getIndex()]);											// uses index of current node to retrieve pointer to city from listCitys 
-		iter = predecessor->getIndex();
-		//cout << "Vorgaenger Node: " << predecessor->getIndex() << endl;
+	if (iter == start_index) {
+		waysFound.push_back(result);																		// adding result path to the waysFound vector 
+		return;
 	}
 
-	result.add_CitytoPath(map->listCitys[nodes[start_index]->getIndex()]);
-	//cout << "Fuege Start node hinzu: " << map->listCitys[nodes[start_index]->getIndex()]->getName() << endl;
-																			
-	waysFound.push_back(result);																			// add result path to vector waysFound
+	for (int i = 0; i < nodes[iter]->getPredecessor().size(); i++) {										// checking how many predecessors of the same cost are present
+		Node* predecessor = nodes[iter]->getPredecessor()[i];
+
+		iter = predecessor->getIndex();																		// updating the iterator iter to the index of one predecessor of current
+		generatePath(iter);																					// and recursively call generatePath() with predecessor index
+	
+		iter = startIter;																					// resetting the iter variable after recursion successful
+		currentPath = current;																				// resetting currentPath after recursion successful
+	}
 }

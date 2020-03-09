@@ -16,6 +16,7 @@ protected:
 	int end_index;
 	vector<Path> waysFound;		
 	Map* map;
+	Path currentPath;
 
 	/*----------------------------------------------------------------------
 								Methods

@@ -74,7 +74,7 @@ public:
 	*/
 	void update_NodeCost(Node* currentNode, Node* neighbour);
 
-	void generatePath(Node* nodes[]);
+	void generatePath(int iter);
 };
 
 #endif 
