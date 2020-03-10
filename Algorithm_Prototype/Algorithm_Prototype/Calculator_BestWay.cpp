@@ -139,8 +139,10 @@ void Calculator_BestWay::generatePath(int iter) {
 
 		iter = predecessor->getIndex();																		// updating the iterator iter to the index of one predecessor of current
 		generatePath(iter);																					// and recursively call generatePath() with predecessor index
-	
+		
 		iter = startIter;																					// resetting the iter variable after recursion successful
-		currentPath = current;																				// resetting currentPath after recursion successful
+		if (iter != end_index) {																			// prevent end City (start point of algorithm) to be resetted if it has two predecessors
+			currentPath = current;																			// resetting currentPath after recursion successful
+		}
 	}
 }
